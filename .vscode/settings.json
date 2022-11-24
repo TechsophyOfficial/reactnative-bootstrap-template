@@ -1,0 +1,9 @@
+{
+    "prettier.jsxSingleQuote": false,
+    "prettier.singleQuote": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "prettier.bracketSpacing": false,
+    "files.eol": "\n",
+    "prettier.jsxBracketSameLine": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
