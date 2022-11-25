@@ -7,7 +7,7 @@ const View = (props: ViewProps & {theme: ThemeOverride}) => {
   return (
     <RNView
       {...props}
-      style={[{backgroundColor: props.theme.colors.background}, props.style]}
+      style={[{backgroundColor: 'transparent'}, props.style]}
     />
   );
 };
