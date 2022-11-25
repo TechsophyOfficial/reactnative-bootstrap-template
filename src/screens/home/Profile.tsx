@@ -6,7 +6,7 @@ import ListButton from '../../components/ListButton';
 import Text from '../../components/Text';
 import View from '../../components/View';
 import useTheme from '../../hooks/useTheme';
-import {HomeComposite} from '../../navigation/HomeTabs';
+import {ProfileComposite} from '../../navigation/ProfileStack';
 import {dip} from '../../util/function';
 import {
   Delete,
@@ -19,10 +19,11 @@ import {
 import {
   AccountsHeader,
   LegalSettingsHeader,
+  ProfileSettingsHead,
   SettingsHeader,
 } from '../../util/strings';
 
-type Props = HomeComposite<'Profile'>;
+type Props = ProfileComposite<'Profile'>;
 
 const Profile = ({navigation}: Props) => {
   const theme = useTheme();
@@ -37,9 +38,21 @@ const Profile = ({navigation}: Props) => {
       </View>
       <Text style={{fontSize: dip(18)}}>{SettingsHeader}</Text>
       <View style={{marginTop: theme.spacing}}>
-        <ListButton text={'Settings'} icon={ProfileIcon} />
+        <ListButton
+          text={ProfileSettingsHead}
+          icon={ProfileIcon}
+          onPress={() => {
+            navigation.navigate('ProfileSettings');
+          }}
+        />
         <Divider />
-        <ListButton text={'Settings'} icon={ProfileIcon} />
+        <ListButton
+          text={'App Settings'}
+          icon={ProfileIcon}
+          onPress={() => {
+            navigation.navigate('AppSettings');
+          }}
+        />
         <Divider />
         <ListButton text={'Settings'} icon={ProfileIcon} />
         <Divider />

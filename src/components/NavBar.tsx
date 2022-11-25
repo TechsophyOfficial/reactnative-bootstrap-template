@@ -5,6 +5,7 @@ import {withTheme} from 'react-native-paper';
 import {SvgProps} from 'react-native-svg';
 import {dip} from '../util/function';
 import {Content, Home, Profile, Share} from '../util/icons';
+import {TabLabel} from '../util/strings';
 import {ThemeOverride} from '../util/theme';
 import Text from './Text';
 import View from './View';
@@ -25,7 +26,12 @@ const TabItem = ({
   onPress: (event: GestureResponderEvent) => void;
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={{alignItems: 'center'}}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{
+        alignItems: 'center',
+        flex: 1,
+      }}>
       <Icon
         width={iconSize}
         height={iconSize}
@@ -49,11 +55,10 @@ const NavBar = (props: BottomTabBarProps & {theme: ThemeOverride}) => {
         elevation: 8,
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: theme.paddingHorizontal,
       }}>
       <TabItem
         Icon={Home}
-        text={'Home'}
+        text={TabLabel[1]}
         selected={props.state.index === 0}
         theme={theme}
         onPress={() => {
@@ -62,7 +67,7 @@ const NavBar = (props: BottomTabBarProps & {theme: ThemeOverride}) => {
       />
       <TabItem
         Icon={Content}
-        text={'Main'}
+        text={TabLabel[2]}
         selected={props.state.index === 1}
         theme={theme}
         onPress={() => {
@@ -71,7 +76,7 @@ const NavBar = (props: BottomTabBarProps & {theme: ThemeOverride}) => {
       />
       <TabItem
         Icon={Share}
-        text={'Messaging'}
+        text={TabLabel[3]}
         selected={props.state.index === 2}
         theme={theme}
         onPress={() => {
@@ -80,7 +85,7 @@ const NavBar = (props: BottomTabBarProps & {theme: ThemeOverride}) => {
       />
       <TabItem
         Icon={Profile}
-        text={'Profile'}
+        text={TabLabel[4]}
         selected={props.state.index === 3}
         theme={theme}
         onPress={() => {

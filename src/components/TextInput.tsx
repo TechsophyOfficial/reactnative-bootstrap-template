@@ -14,6 +14,7 @@ const TextInput = (props: TextInputProps & {theme: ThemeOverride}) => {
           borderWidth: 1,
           borderColor: theme.colors.disabled,
           color: theme.colors.text,
+          paddingHorizontal: theme.spacing,
         },
         props.style,
       ]}

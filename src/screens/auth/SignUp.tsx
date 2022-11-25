@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import Checkbox from '../../components/Checkbox';
 import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
 import TextInput from '../../components/TextInput';
@@ -8,6 +10,7 @@ import {AuthComposite} from '../../navigation/AuthStack';
 import {dip} from '../../util/function';
 import {Logo} from '../../util/icons';
 import {
+  AgreeText,
   LoginPrompt,
   SignUpButton,
   SignUpHeading,
@@ -18,6 +21,7 @@ type Props = AuthComposite<'SignUp'>;
 
 const SignUp = ({navigation}: Props) => {
   const theme = useTheme();
+  const [agreed, setAgreed] = useState(false);
   return (
     <View
       style={{
@@ -38,6 +42,14 @@ const SignUp = ({navigation}: Props) => {
       <TextInput placeholder="Full Name" style={{marginTop: theme.spacing}} />
       <TextInput placeholder="Email" style={{marginTop: theme.spacing}} />
       <TextInput placeholder="Password" style={{marginTop: theme.spacing}} />
+      <TouchableOpacity
+        onPress={() => {
+          setAgreed(!agreed);
+        }}
+        style={{flexDirection: 'row', marginTop: theme.spacing}}>
+        <Checkbox checked={agreed} style={{marginRight: theme.spacing}} />
+        <Text style={{fontSize: dip(12)}}>{AgreeText}</Text>
+      </TouchableOpacity>
       <PrimaryButton text={SignUpButton} style={{marginTop: theme.spacing}} />
       <Text
         onPress={() => {

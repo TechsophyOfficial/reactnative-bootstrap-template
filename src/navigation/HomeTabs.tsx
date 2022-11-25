@@ -9,8 +9,8 @@ import NavBar from '../components/NavBar';
 import Home from '../screens/home/Home';
 import Main from '../screens/home/Main';
 import Messaging from '../screens/home/Messaging';
-import Profile from '../screens/home/Profile';
 import {MainStackParam} from './MainStack';
+import ProfileStack from './ProfileStack';
 
 export type HomeTabsParam = {
   Home: undefined;
@@ -35,7 +35,7 @@ const HomeTabs = () => {
       <BottomTabsNav.Screen name="Home" component={Home} />
       <BottomTabsNav.Screen name="Main" component={Main} />
       <BottomTabsNav.Screen name="Messaging" component={Messaging} />
-      <BottomTabsNav.Screen name="Profile" component={Profile} />
+      <BottomTabsNav.Screen name="Profile" component={ProfileStack} />
     </BottomTabsNav.Navigator>
   );
 };

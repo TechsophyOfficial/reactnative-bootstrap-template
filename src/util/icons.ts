@@ -25,6 +25,13 @@ import Share from '../../assets/svg/Share.svg';
 import Sort from '../../assets/svg/Sort.svg';
 import Star from '../../assets/svg/Star.svg';
 import Terms from '../../assets/svg/Terms.svg';
+import Bookmark from '../../assets/svg/Bookmark.svg';
+import Cross from '../../assets/svg/Search.svg';
+import EyeCross from '../../assets/svg/EyeCross.svg';
+import HeartFill from '../../assets/svg/HeartFill.svg';
+import HeartOutline from '../../assets/svg/HeartOutline.svg';
+import Messages from '../../assets/svg/Messages.svg';
+import Tick from '../../assets/svg/Tick.svg';
 
 export {
   Add,
@@ -54,4 +61,11 @@ export {
   Google,
   Apple,
   Logo,
+  Bookmark,
+  Cross,
+  EyeCross,
+  HeartFill,
+  HeartOutline,
+  Messages,
+  Tick,
 };

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {TouchableOpacity} from 'react-native';
 import BlankButton from '../../components/BlankButton';
+import Checkbox from '../../components/Checkbox';
 import IconButton from '../../components/IconButton';
 import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
@@ -26,6 +28,7 @@ type Props = AuthComposite<'Login'>;
 
 const Login = ({navigation}: Props) => {
   const theme = useTheme();
+  const [agreed, setAgreed] = useState(false);
   return (
     <View
       style={{
@@ -72,9 +75,14 @@ const Login = ({navigation}: Props) => {
         placeholder={PasswordPlaceholder}
         style={{marginTop: theme.spacing}}
       />
-      <Text style={{fontSize: dip(12), marginTop: theme.spacing}}>
-        {AgreeText}
-      </Text>
+      <TouchableOpacity
+        onPress={() => {
+          setAgreed(!agreed);
+        }}
+        style={{flexDirection: 'row', marginTop: theme.spacing}}>
+        <Checkbox checked={agreed} style={{marginRight: theme.spacing}} />
+        <Text style={{fontSize: dip(12)}}>{AgreeText}</Text>
+      </TouchableOpacity>
       <Text
         onPress={() => {
           navigation.navigate('Password');

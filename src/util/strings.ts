@@ -23,3 +23,13 @@ export const PasswordPlaceholder = 'Password';
 export const SettingsHeader = 'Settings';
 export const LegalSettingsHeader = 'Legal';
 export const AccountsHeader = 'Account';
+export const SearchPlaceholder = 'Search ...';
+export const HomeHead = 'Welcome';
+export const TabLabel = {
+  1: 'Home',
+  2: 'Main',
+  3: 'Messaging',
+  4: 'Profile',
+};
+export const ProfileSettingsHead = 'Profile Settings';
+export const SaveButton = 'Save';
