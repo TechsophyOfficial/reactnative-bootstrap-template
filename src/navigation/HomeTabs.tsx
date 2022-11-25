@@ -7,12 +7,15 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Home from '../screens/home/Home';
+import Main from '../screens/home/Main';
+import Messaging from '../screens/home/Messaging';
+import Profile from '../screens/home/Profile';
 import {MainStackParam} from './MainStack';
 
 export type HomeTabsParam = {
   Home: undefined;
-  Files: undefined;
-  Receipts: undefined;
+  Main: undefined;
+  Messaging: undefined;
   Profile: undefined;
 };
 
@@ -30,6 +33,9 @@ const HomeTabs = () => {
         return <NavBar {...props} />;
       }}>
       <BottomTabsNav.Screen name="Home" component={Home} />
+      <BottomTabsNav.Screen name="Main" component={Main} />
+      <BottomTabsNav.Screen name="Messaging" component={Messaging} />
+      <BottomTabsNav.Screen name="Profile" component={Profile} />
     </BottomTabsNav.Navigator>
   );
 };

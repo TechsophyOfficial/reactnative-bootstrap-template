@@ -1,13 +1,25 @@
 import React from 'react';
-import Text from './Text';
-import View from './View';
+import {TextInput as RNTextInput, TextInputProps} from 'react-native';
+import {withTheme} from 'react-native-paper';
+import {theme, ThemeOverride} from '../util/theme';
 
-const TextInput = () => {
+const TextInput = (props: TextInputProps & {theme: ThemeOverride}) => {
   return (
-    <View>
-      <Text>TextInput</Text>
-    </View>
+    <RNTextInput
+      {...props}
+      style={[
+        {
+          borderRadius: theme.roundness,
+          height: theme.buttonHeight,
+          borderWidth: 1,
+          borderColor: theme.colors.disabled,
+          color: theme.colors.text,
+        },
+        props.style,
+      ]}
+      placeholderTextColor={theme.colors.placeholder}
+    />
   );
 };
 
-export default TextInput;
+export default withTheme(TextInput);

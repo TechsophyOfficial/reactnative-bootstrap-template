@@ -1,8 +1,9 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import BlankButton from '../../components/BlankButton';
 import {ForgotPassword, LoginPrompt} from '../../util/strings';
 import {AuthComposite} from '../../navigation/AuthStack';
+import View from '../../components/View';
+import Text from '../../components/Text';
 
 type Props = AuthComposite<'Password'>;
 

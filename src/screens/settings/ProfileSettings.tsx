@@ -2,12 +2,12 @@ import React from 'react';
 import Text from '../../components/Text';
 import View from '../../components/View';
 
-const Main = () => {
+const ProfileSettings = () => {
   return (
     <View>
-      <Text>Main</Text>
+      <Text>Profile Settings</Text>
     </View>
   );
 };
 
-export default Main;
+export default ProfileSettings;
