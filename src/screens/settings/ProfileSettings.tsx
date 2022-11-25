@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Alert from '../../components/Alert';
 import PrimaryButton from '../../components/PrimaryButton';
 import Radio from '../../components/Radio';
 import ScreenHeader from '../../components/ScreenHeader';
@@ -13,6 +14,7 @@ type Props = ProfileComposite<'ProfileSettings'>;
 const ProfileSettings = ({navigation}: Props) => {
   const theme = useTheme();
   const [isFemale, setIsFemale] = useState(true);
+  const [savedDialog, setSavedDialog] = useState(false);
   return (
     <View style={{flex: 1, height: theme.buttonHeight}}>
       <ScreenHeader navigation={navigation} text={ProfileSettingsHead} />
@@ -45,11 +47,20 @@ const ProfileSettings = ({navigation}: Props) => {
         <PrimaryButton
           text={SaveButton}
           onPress={() => {
-            navigation.goBack();
+            setSavedDialog(true);
           }}
           style={{marginTop: theme.spacing}}
         />
       </View>
+      <Alert
+        setVisible={setSavedDialog}
+        title={'Settings Saved'}
+        visible={savedDialog}
+        onPressButton={() => {
+          setSavedDialog(false);
+          navigation.goBack();
+        }}
+      />
     </View>
   );
 };

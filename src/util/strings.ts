@@ -33,3 +33,4 @@ export const TabLabel = {
 };
 export const ProfileSettingsHead = 'Profile Settings';
 export const SaveButton = 'Save';
+export const LogoutConfirm = 'Are you sure you want to logout?';
