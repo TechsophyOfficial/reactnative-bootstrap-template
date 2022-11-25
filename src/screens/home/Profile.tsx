@@ -31,7 +31,11 @@ const Profile = ({navigation}: Props) => {
   const theme = useTheme();
   const [logoutDialog, setLogoutDialog] = useState(false);
   return (
-    <>
+    <View
+      style={{
+        backgroundColor: theme.colors.surface,
+        flex: 1,
+      }}>
       <ScrollView
         style={{
           paddingHorizontal: theme.paddingHorizontal / 2,
@@ -41,7 +45,10 @@ const Profile = ({navigation}: Props) => {
           <Text style={{fontSize: dip(24)}}>{SettingsHeader}</Text>
         </View>
         <Text style={{fontSize: dip(18)}}>{SettingsHeader}</Text>
-        <View style={{marginTop: theme.spacing}}>
+        <View
+          style={{
+            marginTop: theme.spacing,
+          }}>
           <ListButton
             text={ProfileSettingsHead}
             icon={ProfileIcon}
@@ -64,11 +71,29 @@ const Profile = ({navigation}: Props) => {
         </View>
         <Text style={{fontSize: dip(18)}}>{LegalSettingsHeader}</Text>
         <View style={{marginTop: theme.spacing}}>
-          <ListButton text={'Terms'} icon={TermsIcon} />
+          <ListButton
+            text={'Terms'}
+            icon={TermsIcon}
+            onPress={() => {
+              navigation.navigate('Terms', {type: 'Terms'});
+            }}
+          />
           <Divider />
-          <ListButton text={'EULA'} icon={Receipts} />
+          <ListButton
+            text={'EULA'}
+            icon={Receipts}
+            onPress={() => {
+              navigation.navigate('Terms', {type: 'EULA'});
+            }}
+          />
           <Divider />
-          <ListButton text={'Privacy'} icon={Privacy} />
+          <ListButton
+            text={'Privacy'}
+            icon={Privacy}
+            onPress={() => {
+              navigation.navigate('Terms', {type: 'Privacy'});
+            }}
+          />
         </View>
         <Text style={{fontSize: dip(18)}}>{AccountsHeader}</Text>
         <View style={{marginTop: theme.spacing}}>
@@ -98,7 +123,7 @@ const Profile = ({navigation}: Props) => {
           setLogoutDialog(visible);
         }}
       />
-    </>
+    </View>
   );
 };
 

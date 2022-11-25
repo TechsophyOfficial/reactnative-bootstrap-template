@@ -55,6 +55,7 @@ const NavBar = (props: BottomTabBarProps & {theme: ThemeOverride}) => {
         elevation: 8,
         alignItems: 'center',
         justifyContent: 'space-between',
+        backgroundColor: theme.colors.surface,
       }}>
       <TabItem
         Icon={Home}
