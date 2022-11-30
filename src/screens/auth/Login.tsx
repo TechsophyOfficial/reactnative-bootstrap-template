@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {useKeycloak} from '@react-keycloak/native';
+import KeycloakReactNativeClient from '@react-keycloak/native/lib/typescript/src/keycloak/client';
+import React, {useCallback, useState} from 'react';
+import {GestureResponderEvent, TouchableOpacity} from 'react-native';
+import Alert from '../../components/Alert';
 import BlankButton from '../../components/BlankButton';
 import Checkbox from '../../components/Checkbox';
 import IconButton from '../../components/IconButton';
@@ -9,10 +12,12 @@ import TextInput from '../../components/TextInput';
 import View from '../../components/View';
 import useTheme from '../../hooks/useTheme';
 import {AuthComposite} from '../../navigation/AuthStack';
+import {keyCloakLogin} from '../../util/api/auth';
 import {dip} from '../../util/function';
-import {Facebook, Google, Logo} from '../../util/icons';
+import {Apple, Google, Logo} from '../../util/icons';
 import {
   AgreeText,
+  AppleButton,
   EmailPlaceholder,
   FacebookButton,
   ForgotPassword,
@@ -22,13 +27,46 @@ import {
   LoginSubHeading,
   PasswordPlaceholder,
   SignUpPrompt,
+  SocialLoginFailed,
+  TermsAgreeError,
 } from '../../util/strings';
 
 type Props = AuthComposite<'Login'>;
 
+const keycloakLogin = (
+  keycloak: boolean | undefined | KeycloakReactNativeClient,
+  type: string
+) => {
+  return new Promise<boolean>((resolve, reject) => {
+    if (keycloak === undefined || keycloak === true || keycloak === false) {
+      reject('Not Initialized');
+      return;
+    }
+    keycloak
+      .login({idpHint: type})
+      .then(() => {
+        resolve(true);
+      })
+      .catch(error => {
+        resolve(false);
+      });
+  });
+};
+
 const Login = ({navigation}: Props) => {
   const theme = useTheme();
   const [agreed, setAgreed] = useState(false);
+
+  const [keycloak, initialized] = useKeycloak();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [alertError, setError] = useState('');
+
+  const loginComplete = useCallback(() => {
+    navigation.navigate('HomeTabs');
+  }, [navigation]);
+
   return (
     <View
       style={{
@@ -57,23 +95,44 @@ const Login = ({navigation}: Props) => {
           style={{flex: 1}}
           icon={Google}
           text={GoogleButton}
-          onPress={() => {}}
+          onPress={() => {
+            keycloakLogin(keycloak, 'google').then(result => {
+              if (result) {
+                loginComplete();
+              } else {
+                setError(SocialLoginFailed('Google'));
+              }
+            });
+          }}
         />
         <View style={{width: theme.spacing}} />
         <IconButton
           style={{flex: 1}}
-          icon={Facebook}
-          text={FacebookButton}
-          onPress={() => {}}
+          icon={Apple}
+          text={AppleButton}
+          onPress={() => {
+            keycloakLogin(keycloak, 'apple').then(result => {
+              if (result) {
+                loginComplete();
+              } else {
+                setError(SocialLoginFailed('Apple'));
+              }
+            });
+          }}
         />
       </View>
       <TextInput
         placeholder={EmailPlaceholder}
         style={{marginTop: theme.spacing}}
+        value={username}
+        onChangeText={setUsername}
       />
       <TextInput
         placeholder={PasswordPlaceholder}
         style={{marginTop: theme.spacing}}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry={true}
       />
       <TouchableOpacity
         onPress={() => {
@@ -99,6 +158,26 @@ const Login = ({navigation}: Props) => {
         text={LoginButton}
         style={{marginTop: theme.spacing}}
         onPress={() => {
+          if (!agreed) {
+            setError(TermsAgreeError);
+            return;
+          }
+          if (
+            keycloak === undefined ||
+            keycloak === false ||
+            keycloak === true
+          ) {
+            return;
+          }
+          // keyCloakLogin(username, password)
+          //   .then(result => {
+          //     console.log('success');
+          //   })
+          //   .catch(error => {
+          //     setError('Invalid Credentials. Please check again');
+          //     console.log({...error});
+          //   });
+          // keycloak.login({loginHint: username});
           navigation.navigate('HomeTabs');
         }}
       />
@@ -109,6 +188,16 @@ const Login = ({navigation}: Props) => {
         onPress={() => {
           navigation.navigate('SignUp');
         }}
+      />
+      <Alert
+        title={alertError}
+        onPressButton={() => {
+          setError('');
+        }}
+        setVisible={() => {
+          setError('');
+        }}
+        visible={alertError.length > 0}
       />
     </View>
   );

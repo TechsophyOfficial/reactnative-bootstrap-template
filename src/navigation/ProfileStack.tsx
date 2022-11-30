@@ -9,6 +9,9 @@ import AppSettings from '../screens/settings/AppSettings';
 import {HomeComposite} from './HomeTabs';
 import Profile from '../screens/home/Profile';
 import Terms from '../screens/settings/Terms';
+import FAQ from '../screens/settings/FAQ';
+import Contact from '../screens/settings/Contact';
+import About from '../screens/settings/About';
 
 export type ProfileStackParam = {
   Settings: undefined;
@@ -16,12 +19,15 @@ export type ProfileStackParam = {
   AppSettings: undefined;
   Profile: undefined;
   Terms: {type: 'Terms' | 'EULA' | 'Privacy'};
+  Contact: undefined;
+  FAQ: undefined;
+  About: undefined;
 };
 
 export type ProfileComposite<T extends keyof ProfileStackParam> =
   CompositeScreenProps<
     NativeStackScreenProps<ProfileStackParam, T>,
-    HomeComposite<'Profile'>
+    HomeComposite<'ProfileStack'>
   >;
 
 const AuthStackNav = createNativeStackNavigator<ProfileStackParam>();
@@ -33,6 +39,9 @@ const ProfileStack = () => {
       <AuthStackNav.Screen name="ProfileSettings" component={ProfileSettings} />
       <AuthStackNav.Screen name="AppSettings" component={AppSettings} />
       <AuthStackNav.Screen name="Terms" component={Terms} />
+      <AuthStackNav.Screen name="About" component={About} />
+      <AuthStackNav.Screen name="Contact" component={Contact} />
+      <AuthStackNav.Screen name="FAQ" component={FAQ} />
     </AuthStackNav.Navigator>
   );
 };

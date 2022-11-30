@@ -18,18 +18,28 @@ import {
   Terms as TermsIcon,
 } from '../../util/icons';
 import {
+  AboutHeader,
   AccountsHeader,
+  ContactHeader,
+  DeleteAccountButton,
+  EULAHeader,
+  FAQHeader,
   LegalSettingsHeader,
+  LogoutButton,
   LogoutConfirm,
+  PrivacyHeader,
   ProfileSettingsHead,
   SettingsHeader,
+  TermsHeader,
 } from '../../util/strings';
+import {useKeycloak} from '@react-keycloak/native';
 
 type Props = ProfileComposite<'Profile'>;
 
 const Profile = ({navigation}: Props) => {
   const theme = useTheme();
   const [logoutDialog, setLogoutDialog] = useState(false);
+  const [keycloak, initialized] = useKeycloak();
   return (
     <View
       style={{
@@ -64,15 +74,11 @@ const Profile = ({navigation}: Props) => {
               navigation.navigate('AppSettings');
             }}
           />
-          <Divider />
-          <ListButton text={'Settings'} icon={ProfileIcon} />
-          <Divider />
-          <ListButton text={'Settings'} icon={ProfileIcon} />
         </View>
         <Text style={{fontSize: dip(18)}}>{LegalSettingsHeader}</Text>
         <View style={{marginTop: theme.spacing}}>
           <ListButton
-            text={'Terms'}
+            text={TermsHeader}
             icon={TermsIcon}
             onPress={() => {
               navigation.navigate('Terms', {type: 'Terms'});
@@ -80,7 +86,7 @@ const Profile = ({navigation}: Props) => {
           />
           <Divider />
           <ListButton
-            text={'EULA'}
+            text={EULAHeader}
             icon={Receipts}
             onPress={() => {
               navigation.navigate('Terms', {type: 'EULA'});
@@ -88,24 +94,60 @@ const Profile = ({navigation}: Props) => {
           />
           <Divider />
           <ListButton
-            text={'Privacy'}
+            text={PrivacyHeader}
             icon={Privacy}
             onPress={() => {
               navigation.navigate('Terms', {type: 'Privacy'});
+            }}
+          />
+          <Divider />
+          <ListButton
+            text={FAQHeader}
+            icon={ProfileIcon}
+            onPress={() => {
+              navigation.navigate('FAQ');
+            }}
+          />
+          <Divider />
+          <ListButton
+            text={ContactHeader}
+            icon={ProfileIcon}
+            onPress={() => {
+              navigation.navigate('Contact');
+            }}
+          />
+          <Divider />
+          <ListButton
+            text={AboutHeader}
+            icon={ProfileIcon}
+            onPress={() => {
+              navigation.navigate('About');
             }}
           />
         </View>
         <Text style={{fontSize: dip(18)}}>{AccountsHeader}</Text>
         <View style={{marginTop: theme.spacing}}>
           <ListButton
-            text={'Logout'}
+            text={LogoutButton}
             icon={Logout}
-            onPress={() => {
+            onPress={async () => {
+              if (
+                keycloak === undefined ||
+                keycloak === false ||
+                keycloak === true
+              ) {
+                return;
+              }
+              await keycloak.logout();
               setLogoutDialog(true);
             }}
           />
           <Divider />
-          <ListButton text={'Delete Account'} icon={Delete} />
+          <ListButton
+            text={DeleteAccountButton}
+            icon={Delete}
+            onPress={() => {}}
+          />
         </View>
       </ScrollView>
       <Prompt
@@ -117,7 +159,7 @@ const Profile = ({navigation}: Props) => {
           setLogoutDialog(false);
           navigation.navigate('OnBoarding');
         }}
-        positiveTitle={'Logout'}
+        positiveTitle={LogoutButton}
         visible={logoutDialog}
         setVisible={visible => {
           setLogoutDialog(visible);

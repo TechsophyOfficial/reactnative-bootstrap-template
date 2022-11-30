@@ -1,3 +1,4 @@
+import {useKeycloak} from '@react-keycloak/native';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Checkbox from '../../components/Checkbox';
@@ -21,6 +22,7 @@ type Props = AuthComposite<'SignUp'>;
 
 const SignUp = ({navigation}: Props) => {
   const theme = useTheme();
+  const [keycloak, initialized] = useKeycloak();
   const [agreed, setAgreed] = useState(false);
   return (
     <View
@@ -50,7 +52,20 @@ const SignUp = ({navigation}: Props) => {
         <Checkbox checked={agreed} style={{marginRight: theme.spacing}} />
         <Text style={{fontSize: dip(12)}}>{AgreeText}</Text>
       </TouchableOpacity>
-      <PrimaryButton text={SignUpButton} style={{marginTop: theme.spacing}} />
+      <PrimaryButton
+        text={SignUpButton}
+        style={{marginTop: theme.spacing}}
+        onPress={() => {
+          if (
+            keycloak === undefined ||
+            keycloak === false ||
+            keycloak === true
+          ) {
+            return;
+          }
+          keycloak.register({});
+        }}
+      />
       <Text
         onPress={() => {
           navigation.navigate('Login');

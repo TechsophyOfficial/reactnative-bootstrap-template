@@ -13,3 +13,11 @@ export const range = (start: number, end: number, step: number) => {
   }
   return ret;
 };
+
+export const jsonToURLSearch = (obj: {[key: string]: string}) => {
+  const params = new URLSearchParams();
+  Object.keys(obj).forEach(key => {
+    params.append(key, obj[key]);
+  });
+  return params;
+};

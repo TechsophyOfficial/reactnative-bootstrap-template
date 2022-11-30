@@ -90,7 +90,7 @@ const NavBar = (props: BottomTabBarProps & {theme: ThemeOverride}) => {
         selected={props.state.index === 3}
         theme={theme}
         onPress={() => {
-          props.navigation.navigate('Profile');
+          props.navigation.navigate('ProfileStack');
         }}
       />
     </View>

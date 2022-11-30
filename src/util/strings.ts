@@ -1,3 +1,4 @@
+export const AppName = 'App';
 export const OnBoardingHead1 = 'Welcome To App';
 export const WelcomeText1 =
   'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.';
@@ -47,3 +48,23 @@ Vivamus at augue eget arcu dictum varius duis at consectetur. Id aliquet lectus 
 Facilisis mauris sit amet massa vitae tortor. Facilisi cras fermentum odio eu feugiat pretium nibh. Egestas quis ipsum suspendisse ultrices. Quam vulputate dignissim suspendisse in est. Augue neque gravida in fermentum et sollicitudin ac orci. Eu mi bibendum neque egestas congue quisque egestas. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Ornare arcu odio ut sem nulla pharetra diam. Volutpat blandit aliquam etiam erat velit scelerisque in. In mollis nunc sed id semper.
 \n
 Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Vel eros donec ac odio tempor orci dapibus ultrices. At erat pellentesque adipiscing commodo elit at imperdiet dui. Eu scelerisque felis imperdiet proin fermentum leo vel orci. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Sem nulla pharetra diam sit amet nisl suscipit. Pellentesque adipiscing commodo elit at imperdiet dui. Et netus et malesuada fames ac turpis egestas. Sed risus ultricies tristique nulla aliquet enim. Eu facilisis sed odio morbi quis commodo odio aenean. Laoreet sit amet cursus sit. Consectetur libero id faucibus nisl tincidunt eget. Morbi non arcu risus quis varius quam quisque id diam. Morbi blandit cursus risus at ultrices mi tempus imperdiet. Habitant morbi tristique senectus et netus et malesuada. Tempor orci eu lobortis elementum nibh tellus. Sed egestas egestas fringilla phasellus.`;
+
+export const TermsAgreeError = 'Please select the terms and conditions';
+export const SocialLoginFailed = (type: string) => `Login with ${type} failed`;
+
+export const AboutHeader = 'About App';
+export const LogoutButton = 'Logout';
+export const DeleteAccountButton = 'Delete Account';
+
+export const TermsHeader = 'Terms';
+export const EULAHeader = 'EULA';
+export const PrivacyHeader = 'Privacy Policy';
+export const FAQHeader = 'FAQ';
+export const ContactHeader = 'Contact';
+
+export const ShareButton = 'Share';
+export const ShareDetail = 'Share with your contacts';
+export const RateButton = 'Rate';
+export const RateDetail = 'Rate this app on the app store';
+export const ShareMessage = 'Share this app';
+export const ShareURL = 'https://techsophy.com';
