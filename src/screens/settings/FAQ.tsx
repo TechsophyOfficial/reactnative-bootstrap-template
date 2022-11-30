@@ -3,14 +3,14 @@ import ScreenHeader from '../../components/ScreenHeader';
 import Text from '../../components/Text';
 import View from '../../components/View';
 import {ProfileComposite} from '../../navigation/ProfileStack';
-import {AboutHeader} from '../../util/strings';
+import {FAQHeader} from '../../util/strings';
 
 type Props = ProfileComposite<'FAQ'>;
 
 const FAQ = ({navigation}: Props) => {
   return (
     <View>
-      <ScreenHeader text={AboutHeader} navigation={navigation} />
+      <ScreenHeader text={FAQHeader} navigation={navigation} />
       <Text>FAQ</Text>
     </View>
   );

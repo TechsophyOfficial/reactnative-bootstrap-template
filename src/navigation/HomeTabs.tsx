@@ -16,7 +16,7 @@ export type HomeTabsParam = {
   Home: undefined;
   Main: undefined;
   Messaging: undefined;
-  ProfileStack: undefined;
+  ProfileTab: undefined;
 };
 
 export type HomeComposite<T extends keyof HomeTabsParam> = CompositeScreenProps<
@@ -35,7 +35,7 @@ const HomeTabs = () => {
       <BottomTabsNav.Screen name="Home" component={Home} />
       <BottomTabsNav.Screen name="Main" component={Main} />
       <BottomTabsNav.Screen name="Messaging" component={Messaging} />
-      <BottomTabsNav.Screen name="ProfileStack" component={ProfileStack} />
+      <BottomTabsNav.Screen name="ProfileTab" component={ProfileStack} />
     </BottomTabsNav.Navigator>
   );
 };

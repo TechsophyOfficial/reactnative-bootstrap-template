@@ -27,7 +27,7 @@ export type ProfileStackParam = {
 export type ProfileComposite<T extends keyof ProfileStackParam> =
   CompositeScreenProps<
     NativeStackScreenProps<ProfileStackParam, T>,
-    HomeComposite<'ProfileStack'>
+    HomeComposite<'ProfileTab'>
   >;
 
 const AuthStackNav = createNativeStackNavigator<ProfileStackParam>();

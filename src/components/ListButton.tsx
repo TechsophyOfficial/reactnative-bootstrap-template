@@ -11,12 +11,17 @@ import View from './View';
 export type ButtonProps = {
   text: string;
   icon: React.FC<SvgProps>;
+  position?: 'top' | 'bottom' | 'middle';
 };
 
 const Button = (
   buttonProps: {theme: ThemeOverride} & TouchableOpacityProps & ButtonProps
 ) => {
-  const {style, theme, text, ...props} = buttonProps;
+  const {style, theme, text, position, ...props} = buttonProps;
+  let pos = position;
+  if (position === undefined) {
+    pos = 'middle';
+  }
 
   const Icon = buttonProps.icon;
   return (
@@ -24,12 +29,24 @@ const Button = (
       {...props}
       style={[
         {
-          backgroundColor: 'transparent',
+          backgroundColor: theme.colors.surface,
           height: theme.buttonHeight,
           flexDirection: 'row',
           padding: theme.spacing,
         },
         style,
+        pos === 'bottom'
+          ? {
+              borderBottomLeftRadius: theme.roundness * 2,
+              borderBottomRightRadius: theme.roundness * 2,
+            }
+          : undefined,
+        pos === 'top'
+          ? {
+              borderTopLeftRadius: theme.roundness * 2,
+              borderTopRightRadius: theme.roundness * 2,
+            }
+          : undefined,
       ]}>
       {<Icon width={dip(25)} height={dip(25)} color={theme.colors.text} />}
       <Text

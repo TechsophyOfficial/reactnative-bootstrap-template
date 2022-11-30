@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, {useMemo, useState} from 'react';
-import {Image, TouchableOpacity} from 'react-native';
+import {GestureResponderEvent, Image, TouchableOpacity} from 'react-native';
 import {withTheme} from 'react-native-paper';
 import {dip} from '../util/function';
 import {HeartFill, HeartOutline} from '../util/icons';
@@ -11,14 +11,16 @@ import View from './View';
 const HorizontalListItem = ({
   theme,
   item,
+  onPress,
 }: {
   theme: ThemeOverride;
   item: number;
+  onPress?: (event: GestureResponderEvent) => void;
 }) => {
   const random = useMemo(() => Math.random(), []);
   const [fav, setFav] = useState(false);
   return (
-    <View
+    <TouchableOpacity
       style={{
         backgroundColor: theme.colors.surface,
         borderRadius: theme.roundness,
@@ -26,7 +28,8 @@ const HorizontalListItem = ({
         padding: theme.spacing / 2,
         flexDirection: 'column',
         height: dip(210),
-      }}>
+      }}
+      onPress={onPress}>
       <View style={{overflow: 'hidden', borderRadius: theme.roundness}}>
         <Image
           source={
@@ -70,7 +73,7 @@ const HorizontalListItem = ({
           />
         )}
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 };
 

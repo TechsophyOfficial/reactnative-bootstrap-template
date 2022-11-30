@@ -43,15 +43,14 @@ const Profile = ({navigation}: Props) => {
   return (
     <View
       style={{
-        backgroundColor: theme.colors.surface,
+        backgroundColor: theme.colors.background,
         flex: 1,
       }}>
       <ScrollView
         style={{
           paddingHorizontal: theme.paddingHorizontal / 2,
-          marginTop: theme.paddingVertical,
         }}>
-        <View style={{height: hp(5)}}>
+        <View style={{height: hp(5), marginTop: theme.paddingVertical}}>
           <Text style={{fontSize: dip(24)}}>{SettingsHeader}</Text>
         </View>
         <Text style={{fontSize: dip(18)}}>{SettingsHeader}</Text>
@@ -65,6 +64,7 @@ const Profile = ({navigation}: Props) => {
             onPress={() => {
               navigation.navigate('ProfileSettings');
             }}
+            position={'top'}
           />
           <Divider />
           <ListButton
@@ -73,6 +73,7 @@ const Profile = ({navigation}: Props) => {
             onPress={() => {
               navigation.navigate('AppSettings');
             }}
+            position={'bottom'}
           />
         </View>
         <Text style={{fontSize: dip(18)}}>{LegalSettingsHeader}</Text>
@@ -83,6 +84,7 @@ const Profile = ({navigation}: Props) => {
             onPress={() => {
               navigation.navigate('Terms', {type: 'Terms'});
             }}
+            position={'top'}
           />
           <Divider />
           <ListButton
@@ -123,6 +125,7 @@ const Profile = ({navigation}: Props) => {
             onPress={() => {
               navigation.navigate('About');
             }}
+            position={'bottom'}
           />
         </View>
         <Text style={{fontSize: dip(18)}}>{AccountsHeader}</Text>
@@ -141,14 +144,17 @@ const Profile = ({navigation}: Props) => {
               await keycloak.logout();
               setLogoutDialog(true);
             }}
+            position={'top'}
           />
           <Divider />
           <ListButton
             text={DeleteAccountButton}
             icon={Delete}
             onPress={() => {}}
+            position={'bottom'}
           />
         </View>
+        <View style={{height: hp(10)}} />
       </ScrollView>
       <Prompt
         title={LogoutConfirm}
