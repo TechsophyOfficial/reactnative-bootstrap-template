@@ -15,7 +15,7 @@ const ListItem = ({
 }: {
   theme: ThemeOverride;
   item: number;
-  onPress?: (event: GestureResponderEvent) => {};
+  onPress?: (event: GestureResponderEvent) => void;
 }) => {
   const random = useMemo(() => Math.random(), []);
   const [fav, setFav] = useState(false);

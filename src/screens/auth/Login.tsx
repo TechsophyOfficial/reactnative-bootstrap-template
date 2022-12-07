@@ -1,32 +1,29 @@
 import {useKeycloak} from '@react-keycloak/native';
 import KeycloakReactNativeClient from '@react-keycloak/native/lib/typescript/src/keycloak/client';
 import React, {useCallback, useState} from 'react';
-import {GestureResponderEvent, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import Alert from '../../components/Alert';
 import BlankButton from '../../components/BlankButton';
 import Checkbox from '../../components/Checkbox';
 import IconButton from '../../components/IconButton';
 import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
-import TextInput from '../../components/TextInput';
 import View from '../../components/View';
 import useTheme from '../../hooks/useTheme';
 import {AuthComposite} from '../../navigation/AuthStack';
-import {keyCloakLogin} from '../../util/api/auth';
 import {dip} from '../../util/function';
 import {Apple, Google, Logo} from '../../util/icons';
 import {
   AgreeText,
   AppleButton,
-  EmailPlaceholder,
-  FacebookButton,
   ForgotPassword,
   GoogleButton,
   LoginButton,
   LoginHeading,
   LoginSubHeading,
-  PasswordPlaceholder,
+  RegistrationError,
   SignUpPrompt,
+  SkipButton,
   SocialLoginFailed,
   TermsAgreeError,
 } from '../../util/strings';
@@ -59,69 +56,67 @@ const Login = ({navigation}: Props) => {
 
   const [keycloak, initialized] = useKeycloak();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
   const [alertError, setError] = useState('');
 
   const loginComplete = useCallback(() => {
     navigation.navigate('HomeTabs');
   }, [navigation]);
 
+  const keycloakButton = useCallback(
+    (type: string) => {
+      keycloakLogin(keycloak, type).then(result => {
+        if (result) {
+          loginComplete();
+        } else {
+          setError(SocialLoginFailed(type));
+        }
+      });
+    },
+    [keycloak, loginComplete]
+  );
+
   return (
-    <View
-      style={{
-        paddingHorizontal: theme.paddingHorizontal,
-        paddingVertical: theme.paddingVertical,
-        justifyContent: 'center',
-        flex: 1,
-      }}>
-      <View style={{width: '100%', alignItems: 'center'}}>
-        <Logo width={dip(60)} height={dip(60)} />
-      </View>
-      <Text
+    <>
+      <View
         style={{
-          fontSize: dip(24),
-          fontWeight: '800',
-          textAlign: 'center',
-          marginTop: theme.paddingVertical,
+          paddingHorizontal: theme.paddingHorizontal,
+          paddingVertical: theme.paddingVertical,
+          justifyContent: 'center',
+          flex: 1,
         }}>
-        {LoginHeading}
-      </Text>
-      <Text style={{textAlign: 'center', marginTop: theme.spacing}}>
-        {LoginSubHeading}
-      </Text>
-      <View style={{flexDirection: 'row', marginTop: theme.spacing}}>
-        <IconButton
-          style={{flex: 1}}
-          icon={Google}
-          text={GoogleButton}
-          onPress={() => {
-            keycloakLogin(keycloak, 'google').then(result => {
-              if (result) {
-                loginComplete();
-              } else {
-                setError(SocialLoginFailed('Google'));
-              }
-            });
-          }}
-        />
-        <View style={{width: theme.spacing}} />
-        <IconButton
-          style={{flex: 1}}
-          icon={Apple}
-          text={AppleButton}
-          onPress={() => {
-            keycloakLogin(keycloak, 'apple').then(result => {
-              if (result) {
-                loginComplete();
-              } else {
-                setError(SocialLoginFailed('Apple'));
-              }
-            });
-          }}
-        />
-      </View>
-      <TextInput
+        <View style={{width: '100%', alignItems: 'center'}}>
+          <Logo width={dip(60)} height={dip(60)} />
+        </View>
+        <Text
+          style={{
+            fontSize: dip(24),
+            fontWeight: '800',
+            textAlign: 'center',
+            marginTop: theme.paddingVertical,
+          }}>
+          {LoginHeading}
+        </Text>
+        <Text style={{textAlign: 'center', marginTop: theme.spacing}}>
+          {LoginSubHeading}
+        </Text>
+        <View style={{flexDirection: 'row', marginTop: theme.spacing}}>
+          <IconButton
+            style={{flex: 1}}
+            icon={Google}
+            text={GoogleButton}
+            onPress={() => keycloakButton('google')}
+          />
+          <View style={{width: theme.spacing}} />
+          <IconButton
+            style={{flex: 1}}
+            icon={Apple}
+            text={AppleButton}
+            onPress={() => keycloakButton('apple')}
+          />
+        </View>
+        {/* <TextInput
         placeholder={EmailPlaceholder}
         style={{marginTop: theme.spacing}}
         value={username}
@@ -133,17 +128,24 @@ const Login = ({navigation}: Props) => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}
-      />
-      <TouchableOpacity
+      /> */}
+        {/* <TouchableOpacity
         onPress={() => {
           setAgreed(!agreed);
         }}
         style={{flexDirection: 'row', marginTop: theme.spacing}}>
         <Checkbox checked={agreed} style={{marginRight: theme.spacing}} />
         <Text style={{fontSize: dip(12)}}>{AgreeText}</Text>
-      </TouchableOpacity>
-      <Text
+      </TouchableOpacity> */}
+        {/* <Text
         onPress={() => {
+          if (
+            keycloak === undefined ||
+            keycloak === false ||
+            keycloak === true
+          ) {
+            return;
+          }
           navigation.navigate('Password');
         }}
         style={{
@@ -153,53 +155,71 @@ const Login = ({navigation}: Props) => {
           marginTop: theme.spacing,
         }}>
         {ForgotPassword}
-      </Text>
-      <PrimaryButton
-        text={LoginButton}
-        style={{marginTop: theme.spacing}}
+      </Text> */}
+        <PrimaryButton
+          text={LoginButton}
+          style={{marginTop: theme.spacing}}
+          onPress={() => {
+            // if (!agreed) {
+            //   setError(TermsAgreeError);
+            //   return;
+            // }
+            keycloakButton('email');
+          }}
+        />
+        <BlankButton
+          style={{marginTop: theme.spacing}}
+          text={SignUpPrompt}
+          textStyle={{color: theme.colors.primary}}
+          onPress={() => {
+            if (
+              keycloak === undefined ||
+              keycloak === true ||
+              keycloak === false
+            ) {
+              return;
+            }
+            keycloak
+              .register()
+              .then(() => {
+                navigation.navigate('HomeTabs');
+              })
+              .catch(error => {
+                console.error(error);
+                setError(RegistrationError);
+              });
+            // navigation.navigate('SignUp');
+          }}
+        />
+        <Alert
+          title={alertError}
+          onPressButton={() => {
+            setError('');
+          }}
+          setVisible={() => {
+            setError('');
+          }}
+          visible={alertError.length > 0}
+        />
+      </View>
+
+      <TouchableOpacity
+        style={{
+          position: 'absolute',
+          top: theme.paddingVertical,
+          right: theme.paddingHorizontal,
+        }}
         onPress={() => {
-          if (!agreed) {
-            setError(TermsAgreeError);
-            return;
-          }
-          if (
-            keycloak === undefined ||
-            keycloak === false ||
-            keycloak === true
-          ) {
-            return;
-          }
-          // keyCloakLogin(username, password)
-          //   .then(result => {
-          //     console.log('success');
-          //   })
-          //   .catch(error => {
-          //     setError('Invalid Credentials. Please check again');
-          //     console.log({...error});
-          //   });
-          // keycloak.login({loginHint: username});
           navigation.navigate('HomeTabs');
-        }}
-      />
-      <BlankButton
-        style={{marginTop: theme.spacing}}
-        text={SignUpPrompt}
-        textStyle={{color: theme.colors.primary}}
-        onPress={() => {
-          navigation.navigate('SignUp');
-        }}
-      />
-      <Alert
-        title={alertError}
-        onPressButton={() => {
-          setError('');
-        }}
-        setVisible={() => {
-          setError('');
-        }}
-        visible={alertError.length > 0}
-      />
-    </View>
+        }}>
+        <Text
+          style={{
+            color: theme.colors.primary,
+          }}>
+          {SkipButton}
+        </Text>
+      </TouchableOpacity>
+    </>
   );
 };
 

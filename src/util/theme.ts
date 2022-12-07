@@ -15,7 +15,7 @@ const colors = {
   disabled: '#858EA9',
   background: '#F2F2F2',
   surface: '#FFFFFF',
-  error: '#FF0000',
+  error: '#c9190b',
   divider: '#858EA9',
   screen: '#0C0B0A77',
   star: '#F6D060',

@@ -33,6 +33,7 @@ import {
   TermsHeader,
 } from '../../util/strings';
 import {useKeycloak} from '@react-keycloak/native';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 type Props = ProfileComposite<'Profile'>;
 
@@ -133,15 +134,7 @@ const Profile = ({navigation}: Props) => {
           <ListButton
             text={LogoutButton}
             icon={Logout}
-            onPress={async () => {
-              if (
-                keycloak === undefined ||
-                keycloak === false ||
-                keycloak === true
-              ) {
-                return;
-              }
-              await keycloak.logout();
+            onPress={() => {
               setLogoutDialog(true);
             }}
             position={'top'}
@@ -161,9 +154,29 @@ const Profile = ({navigation}: Props) => {
         onPressNegative={() => {
           setLogoutDialog(false);
         }}
-        onPressPositive={() => {
+        onPressPositive={async () => {
+          if (
+            keycloak === undefined ||
+            keycloak === false ||
+            keycloak === true
+          ) {
+            return;
+          }
+          const url = keycloak
+            .createLogoutUrl({redirectUri: undefined})
+            .split('?')[0];
+          InAppBrowser.openAuth(url, 'techsophy://Homepage', {
+            modalEnabled: true,
+          })
+            .then(result => {
+              console.log('success', result);
+              keycloak.clearToken();
+              navigation.navigate('OnBoarding');
+            })
+            .catch(error => {
+              console.error(error);
+            });
           setLogoutDialog(false);
-          navigation.navigate('OnBoarding');
         }}
         positiveTitle={LogoutButton}
         visible={logoutDialog}

@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Image} from 'react-native';
 import BlankButton from '../../components/BlankButton';
 import PrimaryButton from '../../components/PrimaryButton';
@@ -15,11 +15,53 @@ import {
   OnBoardingHead1,
   WelcomeText1,
 } from '../../util/strings';
+import Carousel from 'react-native-snap-carousel';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 type Props = NativeStackScreenProps<MainStackParam, 'OnBoarding'>;
 
 const OnBoarding = ({navigation}: Props) => {
   const theme = useTheme();
+  const carouselItem = useCallback(
+    ({item}: {item: any; index: number}) => {
+      let image = require('../../../assets/img/square1.jpg');
+      switch (item) {
+        case 1:
+          image = require('../../../assets/img/square2.jpg');
+          break;
+        case 2:
+          image = require('../../../assets/img/square3.jpg');
+          break;
+      }
+      return (
+        <View style={{alignItems: 'center'}}>
+          <Image
+            source={image}
+            style={{
+              width: wp(100) - theme.paddingHorizontal * 2,
+              height: wp(100) - theme.paddingHorizontal * 2,
+            }}
+          />
+          <Text
+            style={{
+              fontWeight: '700',
+              fontSize: dip(28),
+              textAlign: 'center',
+              marginTop: theme.paddingVertical,
+            }}>
+            {OnBoardingHead1}
+          </Text>
+          <Text style={{textAlign: 'center', marginTop: theme.spacing}}>
+            {WelcomeText1}
+          </Text>
+        </View>
+      );
+    },
+    [theme]
+  );
   return (
     <View
       style={{
@@ -37,26 +79,18 @@ const OnBoarding = ({navigation}: Props) => {
           }}>
           <Logo width={dip(60)} height={dip(60)} />
         </View>
-        <Image
-          source={require('../../../assets/img/square1.jpg')}
-          style={{
-            width: '80%',
-            height: '50%',
+        <Carousel
+          data={[0, 1, 2]}
+          renderItem={carouselItem}
+          containerCustomStyle={{
             marginTop: theme.paddingVertical,
           }}
+          inactiveSlideScale={1}
+          inactiveSlideOpacity={1}
+          loop={true}
+          sliderWidth={wp(100)}
+          itemWidth={wp(100)}
         />
-        <Text
-          style={{
-            fontWeight: '700',
-            fontSize: dip(28),
-            textAlign: 'center',
-            marginTop: theme.paddingVertical,
-          }}>
-          {OnBoardingHead1}
-        </Text>
-        <Text style={{textAlign: 'center', marginTop: theme.spacing}}>
-          {WelcomeText1}
-        </Text>
       </View>
       <View style={{flex: 2}}>
         <PrimaryButton

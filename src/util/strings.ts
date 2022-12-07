@@ -5,7 +5,8 @@ export const WelcomeText1 =
 export const OnBoardingButton1 = 'Get Started';
 export const OnBoardingButton2 = 'SKIP';
 export const SignUpButton = 'Sign Up';
-export const LoginButton = 'Login';
+export const SkipButton = 'SKIP';
+export const LoginButton = 'Login with Email';
 export const LoginPrompt = 'Have an account? Log in';
 export const LoginHeading = 'Welcome back';
 export const LoginSubHeading =
@@ -68,3 +69,6 @@ export const RateButton = 'Rate';
 export const RateDetail = 'Rate this app on the app store';
 export const ShareMessage = 'Share this app';
 export const ShareURL = 'https://techsophy.com';
+
+export const RegistrationError = 'An error occurred while registering';
+export const NoticationsHeader = 'Notifications';

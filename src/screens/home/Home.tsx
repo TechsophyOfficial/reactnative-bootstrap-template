@@ -7,7 +7,7 @@ import View from '../../components/View';
 import useTheme from '../../hooks/useTheme';
 import {HomeComposite} from '../../navigation/HomeTabs';
 import {dip} from '../../util/function';
-import {Profile} from '../../util/icons';
+import {Email, Profile} from '../../util/icons';
 import {HomeHead, List1Heading, List2Heading} from '../../util/strings';
 
 type Props = HomeComposite<'Home'>;
@@ -39,12 +39,25 @@ const Home = ({navigation}: Props) => {
           paddingHorizontal: theme.paddingHorizontal,
         }}>
         <Text style={{fontSize: dip(20), fontWeight: 'bold'}}>{HomeHead}</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('ProfileTab');
-          }}>
-          <Profile width={dip(25)} height={dip(25)} color={theme.colors.text} />
-        </TouchableOpacity>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Notifications');
+            }}
+            style={{marginRight: theme.spacing}}>
+            <Email width={dip(25)} height={dip(25)} color={theme.colors.text} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ProfileTab');
+            }}>
+            <Profile
+              width={dip(25)}
+              height={dip(25)}
+              color={theme.colors.text}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={{paddingHorizontal: theme.paddingHorizontal}}>
         <SearchBox textInputProps={{}} />
@@ -55,7 +68,14 @@ const Home = ({navigation}: Props) => {
         data={[0, 1, 2, 4, 5, 6, 7]}
         contentContainerStyle={{marginTop: theme.spacing}}
         renderItem={({item}) => {
-          return <HorizontalListItem item={item} onPress={() => {}} />;
+          return (
+            <HorizontalListItem
+              item={item}
+              onPress={() => {
+                navigation.navigate('Product');
+              }}
+            />
+          );
         }}
         style={{paddingHorizontal: theme.paddingHorizontal}}
         snapToInterval={dip(130) + theme.spacing}
@@ -68,7 +88,14 @@ const Home = ({navigation}: Props) => {
         data={[0, 1, 2, 4, 5, 6, 7, 8, 9, 10]}
         contentContainerStyle={{marginTop: theme.spacing}}
         renderItem={({item}) => {
-          return <HorizontalListItem item={item} />;
+          return (
+            <HorizontalListItem
+              item={item}
+              onPress={() => {
+                navigation.navigate('Product');
+              }}
+            />
+          );
         }}
         style={{paddingHorizontal: theme.paddingHorizontal}}
         snapToInterval={dip(130) + theme.spacing}

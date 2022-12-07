@@ -9,6 +9,7 @@ import NavBar from '../components/NavBar';
 import Home from '../screens/home/Home';
 import Main from '../screens/home/Main';
 import Messaging from '../screens/home/Messaging';
+import Notifications from '../screens/home/Notifications';
 import {MainStackParam} from './MainStack';
 import ProfileStack from './ProfileStack';
 
@@ -17,6 +18,7 @@ export type HomeTabsParam = {
   Main: undefined;
   Messaging: undefined;
   ProfileTab: undefined;
+  Notifications: undefined;
 };
 
 export type HomeComposite<T extends keyof HomeTabsParam> = CompositeScreenProps<
@@ -36,6 +38,7 @@ const HomeTabs = () => {
       <BottomTabsNav.Screen name="Main" component={Main} />
       <BottomTabsNav.Screen name="Messaging" component={Messaging} />
       <BottomTabsNav.Screen name="ProfileTab" component={ProfileStack} />
+      <BottomTabsNav.Screen name="Notifications" component={Notifications} />
     </BottomTabsNav.Navigator>
   );
 };

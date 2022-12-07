@@ -5,9 +5,12 @@ import ListItem from '../../components/ListItem';
 import Text from '../../components/Text';
 import View from '../../components/View';
 import useTheme from '../../hooks/useTheme';
+import {HomeComposite} from '../../navigation/HomeTabs';
 import {dip} from '../../util/function';
 
-const Main = () => {
+type Props = HomeComposite<'Main'>;
+
+const Main = ({navigation}: Props) => {
   const theme = useTheme();
   return (
     <View
@@ -29,7 +32,14 @@ const Main = () => {
         data={[0, 1, 2, 4, 5, 6, 7]}
         contentContainerStyle={{marginTop: theme.spacing}}
         renderItem={({item}) => {
-          return <ListItem item={item} />;
+          return (
+            <ListItem
+              item={item}
+              onPress={() => {
+                navigation.navigate('Product');
+              }}
+            />
+          );
         }}
       />
     </View>

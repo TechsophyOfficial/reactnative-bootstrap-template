@@ -39,6 +39,7 @@ const App = () => {
           authClient={keycloak}
           initOptions={{
             redirectUri: 'techsophy://Homepage',
+            postLogoutRedirectUri: 'techsophy://Homepage',
             inAppBrowserOptions: {},
           }}>
           <NavigationContainer onReady={() => RNBootSplash.hide()}>
