@@ -25,11 +25,13 @@ const AppSettings = ({navigation}: Props) => {
           paddingHorizontal: theme.paddingHorizontal,
         }}>
         <SwitchButton
+          style={{marginTop: theme.spacing}}
           label="App Lock"
           checked={appLock}
           setChecked={setAppLock}
         />
         <SwitchButton
+          style={{marginTop: theme.spacing}}
           label="Green Theme"
           checked={storageItem !== '2'}
           setChecked={() => {
@@ -40,7 +42,7 @@ const AppSettings = ({navigation}: Props) => {
         />
         <Spinner
           style={{marginTop: theme.spacing}}
-          data={['English', 'French', 'Italian']}
+          data={['English']}
           label={'Language'}
           onSelect={(_text: string) => {}}
         />

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import Alert from '../../components/Alert';
 import Divider from '../../components/Divider';
 import ListButton from '../../components/ListButton';
 import Prompt from '../../components/Prompt';
@@ -41,6 +42,7 @@ const Profile = ({navigation}: Props) => {
   const theme = useTheme();
   const [logoutDialog, setLogoutDialog] = useState(false);
   const {keycloak} = useOnlyKeycloak();
+  const [error, setError] = useState('');
 
   return (
     <View
@@ -64,7 +66,11 @@ const Profile = ({navigation}: Props) => {
             text={ProfileSettingsHead}
             icon={ProfileIcon}
             onPress={() => {
-              navigation.navigate('ProfileSettings');
+              if (keycloak?.token) {
+                navigation.navigate('ProfileSettings');
+              } else {
+                setError('Please login to access profile settings');
+              }
             }}
             position={'top'}
           />
@@ -180,6 +186,16 @@ const Profile = ({navigation}: Props) => {
         setVisible={visible => {
           setLogoutDialog(visible);
         }}
+      />
+      <Alert
+        visible={error.length > 0}
+        setVisible={() => {
+          setError('');
+        }}
+        onPressButton={() => {
+          setError('');
+        }}
+        title={error}
       />
     </View>
   );

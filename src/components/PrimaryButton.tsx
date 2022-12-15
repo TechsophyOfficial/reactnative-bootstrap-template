@@ -20,7 +20,9 @@ const Button = (
       style={[
         {
           borderRadius: theme.roundness,
-          backgroundColor: theme.colors.primary,
+          backgroundColor: props.disabled
+            ? theme.colors.lightPrimary
+            : theme.colors.primary,
           height: theme.buttonHeight,
           flexDirection: 'row',
           alignItems: 'center',

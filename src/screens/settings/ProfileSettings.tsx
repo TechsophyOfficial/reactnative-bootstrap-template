@@ -5,6 +5,7 @@ import Radio from '../../components/Radio';
 import ScreenHeader from '../../components/ScreenHeader';
 import TextInput from '../../components/TextInput';
 import View from '../../components/View';
+import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {ProfileComposite} from '../../navigation/ProfileStack';
 import {ProfileSettingsHead, SaveButton} from '../../util/strings';
@@ -15,13 +16,25 @@ const ProfileSettings = ({navigation}: Props) => {
   const theme = useTheme();
   const [isFemale, setIsFemale] = useState(true);
   const [savedDialog, setSavedDialog] = useState(false);
+  const {keycloak, profile} = useOnlyKeycloak();
+  console.log(profile);
   return (
     <View style={{flex: 1, height: theme.buttonHeight}}>
       <ScreenHeader navigation={navigation} text={ProfileSettingsHead} />
       <View style={{paddingHorizontal: theme.paddingHorizontal}}>
-        <TextInput style={{marginTop: theme.spacing}} />
-        <TextInput style={{marginTop: theme.spacing}} />
-        <TextInput style={{marginTop: theme.spacing}} />
+        <TextInput
+          style={{marginTop: theme.spacing}}
+          value={profile.given_name}
+        />
+        <TextInput
+          style={{marginTop: theme.spacing}}
+          value={profile.family_name}
+        />
+        <TextInput
+          style={{marginTop: theme.spacing}}
+          value={profile.email}
+          editable={false}
+        />
         <View
           style={{
             marginTop: theme.spacing,
@@ -46,8 +59,10 @@ const ProfileSettings = ({navigation}: Props) => {
         </View>
         <PrimaryButton
           text={SaveButton}
-          onPress={() => {
-            setSavedDialog(true);
+          onPress={async () => {
+            const p = await keycloak?.loadUserProfile();
+            console.log(p);
+            // setSavedDialog(true);
           }}
           style={{marginTop: theme.spacing}}
         />

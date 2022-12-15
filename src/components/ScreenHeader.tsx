@@ -20,18 +20,21 @@ const ScreenHeader = (props: {
         flexDirection: 'row',
         alignItems: 'center',
         padding: theme.spacing,
+        backgroundColor: theme.colors.surface,
       }}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.goBack();
-        }}
-        style={{marginRight: theme.spacing}}>
-        <ChevronLeft
-          width={dip(20)}
-          height={dip(20)}
-          color={theme.colors.text}
-        />
-      </TouchableOpacity>
+      {navigation && (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{marginRight: theme.spacing}}>
+          <ChevronLeft
+            width={dip(20)}
+            height={dip(20)}
+            color={theme.colors.text}
+          />
+        </TouchableOpacity>
+      )}
       <Text style={{fontSize: dip(25), fontWeight: '700'}}>{text}</Text>
     </View>
   );
