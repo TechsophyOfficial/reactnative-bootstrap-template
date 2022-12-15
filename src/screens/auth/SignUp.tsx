@@ -1,4 +1,3 @@
-import {useKeycloak} from '@react-keycloak/native';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Checkbox from '../../components/Checkbox';
@@ -6,6 +5,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
 import TextInput from '../../components/TextInput';
 import View from '../../components/View';
+import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {AuthComposite} from '../../navigation/AuthStack';
 import {dip} from '../../util/function';
@@ -22,7 +22,7 @@ type Props = AuthComposite<'SignUp'>;
 
 const SignUp = ({navigation}: Props) => {
   const theme = useTheme();
-  const [keycloak, initialized] = useKeycloak();
+  const {keycloak} = useOnlyKeycloak();
   const [agreed, setAgreed] = useState(false);
   return (
     <View
@@ -56,11 +56,7 @@ const SignUp = ({navigation}: Props) => {
         text={SignUpButton}
         style={{marginTop: theme.spacing}}
         onPress={() => {
-          if (
-            keycloak === undefined ||
-            keycloak === false ||
-            keycloak === true
-          ) {
+          if (keycloak === undefined) {
             return;
           }
           keycloak.register({});

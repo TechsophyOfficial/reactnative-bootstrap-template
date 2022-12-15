@@ -1,22 +1,19 @@
-import {useKeycloak} from '@react-keycloak/native';
 import KeycloakReactNativeClient from '@react-keycloak/native/lib/typescript/src/keycloak/client';
 import React, {useCallback, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Alert from '../../components/Alert';
 import BlankButton from '../../components/BlankButton';
-import Checkbox from '../../components/Checkbox';
 import IconButton from '../../components/IconButton';
 import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
 import View from '../../components/View';
+import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {AuthComposite} from '../../navigation/AuthStack';
 import {dip} from '../../util/function';
 import {Apple, Google, Logo} from '../../util/icons';
 import {
-  AgreeText,
   AppleButton,
-  ForgotPassword,
   GoogleButton,
   LoginButton,
   LoginHeading,
@@ -25,7 +22,6 @@ import {
   SignUpPrompt,
   SkipButton,
   SocialLoginFailed,
-  TermsAgreeError,
 } from '../../util/strings';
 
 type Props = AuthComposite<'Login'>;
@@ -52,9 +48,9 @@ const keycloakLogin = (
 
 const Login = ({navigation}: Props) => {
   const theme = useTheme();
-  const [agreed, setAgreed] = useState(false);
+  // const [agreed, setAgreed] = useState(false);
 
-  const [keycloak, initialized] = useKeycloak();
+  const {keycloak} = useOnlyKeycloak();
 
   // const [username, setUsername] = useState('');
   // const [password, setPassword] = useState('');
@@ -172,11 +168,7 @@ const Login = ({navigation}: Props) => {
           text={SignUpPrompt}
           textStyle={{color: theme.colors.primary}}
           onPress={() => {
-            if (
-              keycloak === undefined ||
-              keycloak === true ||
-              keycloak === false
-            ) {
+            if (keycloak === undefined) {
               return;
             }
             keycloak

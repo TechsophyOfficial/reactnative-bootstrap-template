@@ -7,6 +7,7 @@ export const OnBoardingButton2 = 'SKIP';
 export const SignUpButton = 'Sign Up';
 export const SkipButton = 'SKIP';
 export const LoginButton = 'Login with Email';
+export const LoginButtonProfile = 'Login';
 export const LoginPrompt = 'Have an account? Log in';
 export const LoginHeading = 'Welcome back';
 export const LoginSubHeading =

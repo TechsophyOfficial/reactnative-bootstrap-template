@@ -4,6 +4,7 @@ import HorizontalListItem from '../../components/HorizontalListItem';
 import SearchBox from '../../components/SearchBox';
 import Text from '../../components/Text';
 import View from '../../components/View';
+import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {HomeComposite} from '../../navigation/HomeTabs';
 import {dip} from '../../util/function';
@@ -25,6 +26,8 @@ const Home = ({navigation}: Props) => {
     };
   }, [theme]);
 
+  const {profile} = useOnlyKeycloak();
+
   return (
     <View
       style={{
@@ -38,7 +41,9 @@ const Home = ({navigation}: Props) => {
           alignItems: 'center',
           paddingHorizontal: theme.paddingHorizontal,
         }}>
-        <Text style={{fontSize: dip(20), fontWeight: 'bold'}}>{HomeHead}</Text>
+        <Text style={{fontSize: dip(20), fontWeight: 'bold'}}>
+          {HomeHead} {profile?.family_name}
+        </Text>
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => {

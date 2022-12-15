@@ -1,10 +1,13 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useCallback} from 'react';
 import {Image} from 'react-native';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import Carousel from 'react-native-snap-carousel';
 import BlankButton from '../../components/BlankButton';
 import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
 import View from '../../components/View';
+import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {MainStackParam} from '../../navigation/MainStack';
 import {dip} from '../../util/function';
@@ -15,16 +18,14 @@ import {
   OnBoardingHead1,
   WelcomeText1,
 } from '../../util/strings';
-import Carousel from 'react-native-snap-carousel';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
 
 type Props = NativeStackScreenProps<MainStackParam, 'OnBoarding'>;
 
 const OnBoarding = ({navigation}: Props) => {
   const theme = useTheme();
+
+  const {keycloak} = useOnlyKeycloak();
+
   const carouselItem = useCallback(
     ({item}: {item: any; index: number}) => {
       let image = require('../../../assets/img/square1.jpg');
@@ -96,7 +97,7 @@ const OnBoarding = ({navigation}: Props) => {
         <PrimaryButton
           text={OnBoardingButton1}
           onPress={() => {
-            navigation.navigate('AuthStack');
+            navigation.navigate(keycloak?.token ? 'HomeTabs' : 'AuthStack');
           }}
         />
         <BlankButton

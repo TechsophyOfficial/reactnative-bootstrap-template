@@ -12,9 +12,10 @@ const Spinner = (
     theme: ThemeOverride;
     data: string[];
     onSelect: (text: string) => void;
+    label?: string;
   } & ViewProps
 ) => {
-  const {theme, data, onSelect, ...viewProps} = props;
+  const {theme, data, onSelect, label, ...viewProps} = props;
   const {style: viewStyle}: any = viewProps;
   return (
     <SelectDropdown
@@ -47,7 +48,7 @@ const Spinner = (
       renderCustomizedButtonChild={(selectedItem, _index) => {
         return (
           <Text style={{fontSize: dip(16)}}>
-            {selectedItem ?? 'Select Value'}
+            {selectedItem ?? label ?? 'Select Value'}
           </Text>
         );
       }}

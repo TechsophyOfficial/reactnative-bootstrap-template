@@ -11,9 +11,10 @@ const SwitchButton = (
     checked: boolean;
     theme: ThemeOverride;
     setChecked: Function;
+    label: string;
   } & ViewProps
 ) => {
-  const {theme, checked, setChecked, ...viewProps} = props;
+  const {label, theme, checked, setChecked, ...viewProps} = props;
   return (
     <TouchableOpacity
       {...viewProps}
@@ -32,7 +33,7 @@ const SwitchButton = (
       onPress={() => {
         setChecked(!checked);
       }}>
-      <Text style={{fontSize: dip(16)}}>App Lock</Text>
+      <Text style={{fontSize: dip(16)}}>{label}</Text>
       <Switch checked={checked} />
     </TouchableOpacity>
   );

@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import Prompt from '../../components/Prompt';
 import Divider from '../../components/Divider';
 import ListButton from '../../components/ListButton';
+import Prompt from '../../components/Prompt';
 import Text from '../../components/Text';
 import View from '../../components/View';
+import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {ProfileComposite} from '../../navigation/ProfileStack';
 import {dip} from '../../util/function';
@@ -25,6 +26,7 @@ import {
   EULAHeader,
   FAQHeader,
   LegalSettingsHeader,
+  LoginButtonProfile,
   LogoutButton,
   LogoutConfirm,
   PrivacyHeader,
@@ -32,15 +34,14 @@ import {
   SettingsHeader,
   TermsHeader,
 } from '../../util/strings';
-import {useKeycloak} from '@react-keycloak/native';
-import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 type Props = ProfileComposite<'Profile'>;
 
 const Profile = ({navigation}: Props) => {
   const theme = useTheme();
   const [logoutDialog, setLogoutDialog] = useState(false);
-  const [keycloak, initialized] = useKeycloak();
+  const {keycloak} = useOnlyKeycloak();
+
   return (
     <View
       style={{
@@ -132,13 +133,21 @@ const Profile = ({navigation}: Props) => {
         <Text style={{fontSize: dip(18)}}>{AccountsHeader}</Text>
         <View style={{marginTop: theme.spacing}}>
           <ListButton
-            text={LogoutButton}
+            text={keycloak?.token ? LogoutButton : LoginButtonProfile}
             icon={Logout}
             onPress={() => {
-              setLogoutDialog(true);
+              if (keycloak?.token) {
+                setLogoutDialog(true);
+              } else {
+                navigation.reset({
+                  index: 0,
+                  routes: [{name: 'AuthStack' as any}],
+                });
+              }
             }}
             position={'top'}
           />
+
           <Divider />
           <ListButton
             text={DeleteAccountButton}
@@ -155,27 +164,15 @@ const Profile = ({navigation}: Props) => {
           setLogoutDialog(false);
         }}
         onPressPositive={async () => {
-          if (
-            keycloak === undefined ||
-            keycloak === false ||
-            keycloak === true
-          ) {
+          if (keycloak === undefined) {
             return;
           }
-          const url = keycloak
-            .createLogoutUrl({redirectUri: undefined})
-            .split('?')[0];
-          InAppBrowser.openAuth(url, 'techsophy://Homepage', {
-            modalEnabled: true,
-          })
-            .then(result => {
-              console.log('success', result);
-              keycloak.clearToken();
-              navigation.navigate('OnBoarding');
-            })
-            .catch(error => {
-              console.error(error);
-            });
+          setLogoutDialog(false);
+          await keycloak.logout();
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'AuthStack' as any}],
+          });
           setLogoutDialog(false);
         }}
         positiveTitle={LogoutButton}
