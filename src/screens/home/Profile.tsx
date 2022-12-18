@@ -67,7 +67,8 @@ const Profile = ({navigation}: Props) => {
             icon={ProfileIcon}
             onPress={() => {
               if (keycloak?.token) {
-                navigation.navigate('ProfileSettings');
+                keycloak?.accountManagement();
+                // navigation.navigate('ProfileSettings');
               } else {
                 setError('Please login to access profile settings');
               }

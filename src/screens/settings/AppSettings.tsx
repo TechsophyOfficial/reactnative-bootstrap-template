@@ -4,6 +4,7 @@ import ScreenHeader from '../../components/ScreenHeader';
 import Spinner from '../../components/Spinner';
 import SwitchButton from '../../components/SwitchButton';
 import View from '../../components/View';
+import {useAppSettingsContext} from '../../context/appSettings';
 import useAsyncStorage from '../../hooks/useAsyncStorage';
 import useTheme from '../../hooks/useTheme';
 import {ProfileComposite} from '../../navigation/ProfileStack';
@@ -16,6 +17,8 @@ const AppSettings = ({navigation}: Props) => {
   const [appLock, setAppLock] = useState(false);
 
   const [storageItem, updateStorageItem] = useAsyncStorage('theme');
+
+  const context = useAppSettingsContext();
 
   return (
     <View style={{flex: 1, height: theme.buttonHeight}}>
@@ -30,13 +33,14 @@ const AppSettings = ({navigation}: Props) => {
           checked={appLock}
           setChecked={setAppLock}
         />
-        <SwitchButton
+        <Spinner
           style={{marginTop: theme.spacing}}
-          label="Green Theme"
-          checked={storageItem !== '2'}
-          setChecked={() => {
+          data={['Green', 'Blue', 'Red']}
+          label={storageItem ?? 'Select Theme'}
+          onSelect={(text: string) => {
+            context.setTheme(text);
             if (typeof updateStorageItem === 'function') {
-              updateStorageItem(storageItem === '2' ? '1' : '2');
+              updateStorageItem(text);
             }
           }}
         />

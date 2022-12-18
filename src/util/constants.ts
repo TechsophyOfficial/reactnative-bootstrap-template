@@ -30,14 +30,14 @@ export const PAYPAL_CHECKOUT = DEV ? DEV_PAYPAL_CHECKOUT : PROD_PAYPAL_CHECKOUT;
 
 export default keycloak;
 
-export const stripe = {
+export const STRIPE_KEYS = {
   publishable_key:
     'pk_test_51MEGqOSH315QcFT6FAC23mx7Izl41zm0AXNNJBPDDLFIXjWrLZHPxGRUyy32fplYf3u3PXKzLRvOVPe8mKIZ9jAN00rpj5sszh',
   secret_key:
     'sk_test_51MEGqOSH315QcFT6neqtR8jzXptu92lLtFwIsxhCtmMxgTAtDjhMzVNPx90uRnexEuzRejkbqEE3RrhNBMDuXlem00ck842pDI',
 };
 
-export const razorpay = {
+export const RAZORPAY_KEYS = {
   merchant_id: 'Kr6AuC9NTG3YXf',
   key_id: 'rzp_test_N9aVLRM92gT1CY',
   key_secret: 'BJf0iFxatZJYb7jxtlbRULbY',

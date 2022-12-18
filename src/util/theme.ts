@@ -37,6 +37,22 @@ const colors2 = {
   star: '#F6D060',
 };
 
+const colors3 = {
+  primary: '#F44336',
+  lightPrimary: '#FFCDD2',
+  darkPrimary: '#D32F2F',
+  text: '#212121',
+  lightText: '#FFFFFF',
+  placeholder: '#677294',
+  disabled: '#858EA9',
+  background: '#F2F2F2',
+  surface: '#FFFFFF',
+  error: '#c9190b',
+  divider: '#858EA9',
+  screen: '#0C0B0A77',
+  star: '#F6D060',
+};
+
 const mainConfig: Fonts = {
   light: {
     fontFamily: MainFamily + '-Light',
@@ -90,6 +106,20 @@ export const theme2 = {
   colors: {
     ...DefaultTheme.colors,
     ...colors2,
+  },
+};
+
+export const theme3 = {
+  ...DefaultTheme,
+  roundness: dip(10),
+  spacing: dip(15),
+  buttonHeight: dip(54),
+  paddingVertical: dip(30),
+  paddingHorizontal: dip(40),
+  fonts: configureFonts(fontConfig),
+  colors: {
+    ...DefaultTheme.colors,
+    ...colors3,
   },
 };
 

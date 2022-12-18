@@ -2,7 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useCallback, useEffect, useState} from 'react';
 
 const useAsyncStorage = (
-  key: string
+  key: string,
+  dep?: any
 ): [string | null, (a: string) => string, () => void] => {
   const [storageItem, setStorageItem] = useState<null | string>(null);
 
@@ -26,7 +27,7 @@ const useAsyncStorage = (
 
   useEffect(() => {
     getStorageItem();
-  }, [getStorageItem]);
+  }, [getStorageItem, dep]);
 
   return [storageItem, updateStorageItem, clearStorageItem];
 };
