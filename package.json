@@ -31,7 +31,6 @@
         "react-native-inappbrowser-reborn": "^3.7.0",
         "react-native-linear-gradient": "^2.6.2",
         "react-native-paper": "^4.12.5",
-        "react-native-payments-3p": ".\\lib\\react-native-payments-3p\\react-native-payments-3p-0.1.4.tgz",
         "react-native-permissions": "^3.6.1",
         "react-native-pixel-perfect": "^1.0.2",
         "react-native-razorpay": "^2.3.0",
@@ -43,8 +42,13 @@
         "react-native-snap-carousel": "^3.9.1",
         "react-native-svg": "^13.6.0",
         "react-native-tab-view": "^3.3.0",
+        "react-native-vision-camera": "^2.15.2",
         "react-navigation": "^4.4.4",
-        "react-query": "^3.39.2"
+        "react-query": "^3.39.2",
+        "socket.io-client": "2.3.0",
+        "ts-react-native-barcode-scanner": ".\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.2.tgz",
+        "ts-react-native-payments": ".\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.5.tgz",
+        "vision-camera-code-scanner": "^0.2.0"
     },
     "devDependencies": {
         "@babel/core": "^7.12.9",

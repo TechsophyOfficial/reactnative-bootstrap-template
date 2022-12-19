@@ -4,7 +4,7 @@ import {
   usePaypalPayment,
   useRazorpayPayment,
   useStripePayment,
-} from 'react-native-payments-3p';
+} from 'ts-react-native-payments';
 import PrimaryButton from '../../components/PrimaryButton';
 import ScreenHeader from '../../components/ScreenHeader';
 import Spinner from '../../components/Spinner';
@@ -31,14 +31,12 @@ const Product = ({navigation}: Props) => {
   const {processPayment: processRazorpay} = useRazorpayPayment(
     RAZORPAY_KEYS.key_id
   );
-  const {processPayment: processStripe} = useStripePayment();
+  const {processPayment: processStripe} = useStripePayment({
+    publishableKey: STRIPE_KEYS.publishable_key,
+  });
   const {processPayment: processPaypal} = usePaypalPayment(true);
 
   const {profile} = useOnlyKeycloak();
-
-  useEffect(() => {
-    initStripe({publishableKey: STRIPE_KEYS.publishable_key});
-  }, []);
 
   return (
     <View>
@@ -72,6 +70,10 @@ const Product = ({navigation}: Props) => {
                 contact: '',
                 name: profile?.full_name,
               },
+              theme: '',
+              image: '',
+              currency: 'USD',
+              name: '',
             });
           }}
         />

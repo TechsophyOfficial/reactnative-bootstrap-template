@@ -26,7 +26,7 @@ const Home = ({navigation}: Props) => {
     };
   }, [theme]);
 
-  const {profile} = useOnlyKeycloak();
+  const {keycloak, profile} = useOnlyKeycloak();
 
   return (
     <View

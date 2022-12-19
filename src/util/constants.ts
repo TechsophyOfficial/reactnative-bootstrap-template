@@ -42,3 +42,16 @@ export const RAZORPAY_KEYS = {
   key_id: 'rzp_test_N9aVLRM92gT1CY',
   key_secret: 'BJf0iFxatZJYb7jxtlbRULbY',
 };
+
+export const SXP = {
+  pid: '621ca957d3f3cc052418505f',
+  url: 'https://sxp.channel-adapter.k8s.techsophy.com/',
+  path: '/socket.io/',
+  appId: 'working',
+  version: 'WORKING',
+};
+
+export const SXPCommands = {
+  restart: '::restart',
+  start: 'sample',
+};
