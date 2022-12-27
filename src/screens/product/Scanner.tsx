@@ -1,7 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 import {useCameraDevices} from 'react-native-vision-camera';
 import BarcodeScanner from 'ts-react-native-barcode-scanner';
+import Text from '../../components/Text';
+import View from '../../components/View';
 
 const ScannerScreen = () => {
   const devices = useCameraDevices();
@@ -11,9 +13,9 @@ const ScannerScreen = () => {
       <Text>ScannerScreen</Text>
       {device && (
         <BarcodeScanner
-          style={StyleSheet.absoluteFill}
+          style={StyleSheet.absoluteFill as ViewStyle}
           camera={device}
-          callback={(barcodes) => {
+          callback={barcodes => {
             console.log(barcodes);
           }}
         />

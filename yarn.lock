@@ -8451,13 +8451,21 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-"ts-react-native-barcode-scanner@.\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.2.tgz":
-  version "0.1.2"
-  resolved ".\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.2.tgz#9cff10846dce2254c315978f98d500f6909e23b1"
+"ts-react-native-barcode-scanner@.\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.3.tgz":
+  version "0.1.3"
+  resolved ".\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.3.tgz#148830d1f70bc3af0fc855831c801bf2969e6152"
 
-"ts-react-native-payments@.\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.5.tgz":
-  version "0.1.5"
-  resolved ".\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.5.tgz#84a2a45ec569bc969095e1630b26df54b6cdbfd1"
+"ts-react-native-payments@.\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.6.tgz":
+  version "0.1.6"
+  resolved ".\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.6.tgz#d7e2046cda08536f54185125c8669247d5526349"
+
+"ts-react-native-sxp@.\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.0.tgz":
+  version "0.1.0"
+  resolved ".\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.0.tgz#1202f635e379d2efd61ebb08f9041ecb7062759a"
+
+"ts-react-native-sxp@.\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.1.tgz":
+  version "0.1.1"
+  resolved ".\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.1.tgz#fa764cb2e2a7ea19752f3c98c43373eedf6310e9"
 
 tslib@^1.8.1:
   version "1.14.1"

@@ -12,13 +12,20 @@ import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {SXP, SXPCommands} from '../../util/constants';
 
+import {useSXPChat} from 'ts-react-native-sxp';
+
+// const token =
+//   'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGUTYwSUxERkhIODJhVmxqRlJSaDVtVHRNcTVqUDc4YnBLVEdNb0dhMnpFIn0.eyJleHAiOjE2NzE1Mzk2MTMsImlhdCI6MTY3MTUzNzgxMywiYXV0aF90aW1lIjoxNjcxNTM3ODEyLCJqdGkiOiJmNGY2N2Y4OS1hOGM1LTRjYzItYTM4Mi04NzlhY2Q4NzczZmMiLCJpc3MiOiJodHRwczovL2F1dGgtZGV2LmtpbXMuaW4vYXV0aC9yZWFsbXMvdGVjaHNvcGh5LXBsYXRmb3JtIiwiYXVkIjpbImNhbXVuZGEtaWRlbnRpdHktc2VydmljZSIsImFjY291bnQiXSwic3ViIjoiNWY4YzljOTctYmRhMS00ZmNmLWFiMGEtZGVjMjRlYWM1MzRkIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoidHAtdWktY29yZSIsIm5vbmNlIjoiYzZiNGY2ZWUtNDM3OC00ZWFkLTg1YmMtOTQ2YWFmOTNlZDNjIiwic2Vzc2lvbl9zdGF0ZSI6IjU4YWNkZmZhLWY5MTAtNGJhOC1hZWM0LTM2ODk5OGQ5ZDAxNiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9hdXRoLWRldi5raW1zLmluIiwiKiIsImh0dHBzOi8vYXVnbW50LWRldi5raW1zLmluIiwiaHR0cHM6Ly9hcGktZGV2LmtpbXMuaW4iXSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBBdWdtbnQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJyYXZpIHJhamEgbXlsYXZhcmFwdSIsInByZWZlcnJlZF91c2VybmFtZSI6IjkxOTY2NjExODg3NiIsImdpdmVuX25hbWUiOiJyYXZpIHJhamEiLCJmYW1pbHlfbmFtZSI6Im15bGF2YXJhcHUiLCJlbWFpbCI6InJhdmltLm1AdGVjaHNvcGh5LmNvbSJ9.XFkDW7hWgkcQixMA7WGBMVPU4-zwywo52cezRKfyU8PsKAu1TK0HDy0eKoW6ElAEyqk6AwT5VZyU4zU4P3NMw2Q2k-clSyrjYF4Wep0nZRYcFyKJ0h0TVSCVFtF7u7EXuRvRz1cCEdn3UA0flg2Ip3OIvk86BwbGsKiHBhmrLh-eWiQlSj92e37HENrq0gc2fDeB9SP-fCn5KZ_affX_FAh9HtzT_O6SSCMYShEjIvkgYkP5RUI1s6Iq0Ak4nNSZy9FdxuFjHaAgNLoOzJwHSOXXy133r2hJ-qReiwS4aAcKbJqzs6AUsH9MEUiEg7XzA1nTqMMh3DtvLvta-MfgyQ';
+const token =
+  'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ2SVpMNGRlb3pjWUR6VjJPeFhpRGRXdzRiWkpEY3dITEVSWWRoU2hGNjRZIn0.eyJleHAiOjE2NzE1Mzg1MTgsImlhdCI6MTY3MTUzNzYxOCwiYXV0aF90aW1lIjoxNjcxNTM3NjEwLCJqdGkiOiJiMDU0ZTFmZi1hODRlLTRlOTctOGNhYS0zNGI2ZTk5MTI4NTciLCJpc3MiOiJodHRwczovL3N4cC5rZXljbG9hay1kZXYudGVjaHNvcGh5LmNvbS9hdXRoL3JlYWxtcy9zeHAtbWljcm9zZXJ2aWNlcyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJmY2UwY2Y2Ny1mOTg0LTQ3OTktYjE2YS00ZTFhNDZkMmJlM2UiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzeHAiLCJub25jZSI6IjNlMjljNTM3LTlmZTMtNGM2Mi04NzA4LWJmZDNmNTU0NDVhMiIsInNlc3Npb25fc3RhdGUiOiIyNGIyYzIxYS1iMThiLTRhNDctYjE0Mi1hOTNkNjJkYjg1ODYiLCJhY3IiOiIwIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHBzOi8vc3hwLnYxLnRlY2hzb3BoeS5jb20iLCJodHRwczovL2pvbGx5LXN1bmRhZS1iZmZmMzkubmV0bGlmeS5hcHAiLCJraW1zOi8vb2F1dGgiLCJodHRwOi8vc3hwLmFkbWluLXVpLms4cy50ZWNoc29waHkuY29tIiwiaHR0cDovLzE3Mi4xNi4wLjE2MzozMDAxIiwiaHR0cDovL3N4cC5hZG1pbi1zZXJ2aWNlcy5rOHMudGVjaHNvcGh5LmNvbSIsImh0dHBzOi8vc3hwLnYxLmFkbWluLnRlY2hzb3BoeS5jb20iLCJodHRwOi8vbG9jYWxob3N0OjMwMDEiLCJodHRwOi8vbG9jYWxob3N0OjMwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtc3hwLW1pY3Jvc2VydmljZXMiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBzdXBlci1hZG1pbiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik5pdGhpbiBLdW1hciIsInByZWZlcnJlZF91c2VybmFtZSI6Im5pdGhpbi5nIiwiZ2l2ZW5fbmFtZSI6Ik5pdGhpbiIsImZhbWlseV9uYW1lIjoiS3VtYXIiLCJzdXBlckFkbWluIjp0cnVlLCJlbWFpbCI6Im5pdGhpbi5nQHRlY2hzb3BoeS5jb20ifQ.vGRjoS-W0Ut3sYT2zuhGMBXmStsduatTUGl_DxdXZJs02o00vQ_PQ2zA6xtJSGgMBKlxbBhSwIy1RahcoafNB0lzhwNp-HSGk462c0_QHjksnjemPoqMtuAybdtO9kvaqNF17aC-evZwtLKnsMtMmznmBggjqg1ZZAn2ln8-XNDuYx71dSii3h-9JaxzclAP_FP50O9EPTUxqkH8ByuaM2uZsaC9rsFKG5IiP77xHz_BM5UI-oLyQ_79057-Wq9MMHNdRaVhjkmZp-35y46CDW4702xgWu34k2EYDQn-AoA2Z6V3cgdvVXJ6Namz8Jj28v7PRR2cNkfzkML2gaBOtQ';
+
 const Messaging = () => {
-  const {keycloak} = useOnlyKeycloak();
+  const {keycloak, profile} = useOnlyKeycloak();
   const theme = useTheme();
-  const userRef = useRef('vinod.g@techsophy.com');
+  const userRef = useRef(profile?.email);
 
   const [message, setMessage] = useState('');
-  const [quickBtnList, setQuickBtnList] = useState([]);
+
   const [showQuickBtns, setShowQuickBtns] = useState(false);
   const flatListRef = useRef<FlatList | null>(null);
 
@@ -26,95 +33,18 @@ const Messaging = () => {
     {actor: 'Bot', message: 'Welcome to KIMS / కిమ్స్‌కు స్వాగతం'},
   ]);
 
-  const socket: any = useRef();
-
-  const msgRel = useCallback((obj: any) => {
-    console.log('emit', obj);
-    socket.current.emit('message', obj);
+  const sxpEvent = useCallback((type: string, data: any) => {
+    console.log(type, data);
   }, []);
 
-  const initialMsgObj = useMemo(
-    () => ({
-      userId: userRef.current,
-      message: 'hi',
-      appId: SXP.appId,
-      projectId: SXP.pid,
-      version: SXP.version,
-    }),
-    []
-  );
-
-  const restartConv = useMemo(
-    () => ({
-      userId: userRef.current,
-      message: SXPCommands.restart,
-      appId: SXP.appId,
-      projectId: SXP.pid,
-      version: SXP.version,
-    }),
-    []
-  );
-
-  useEffect(() => {
-    if (SXP.path) {
-      socket.current = io(SXP.url, {path: SXP.path});
-    } else {
-      socket.current = io(SXP.url);
-    }
-
-    socket.current.on('joined', (userId: any) => {
-      console.log('joined', userId);
-      msgRel(initialMsgObj);
-    });
-
-    socket.current.on('connect', async () => {
-      console.log('connected');
-      socket.current.emit('join', {
-        userId: userRef.current,
-        accessToken: `Bearer ${keycloak?.token}`,
-        projectId: SXP.pid,
-      });
-    });
-
-    socket.current.on('disconnect', () => {
-      console.log('disconnecting socket');
-    });
-
-    socket.current.on('message', (data: any) => {
-      console.log('data', data);
-      flatListRef.current?.scrollToEnd({animated: true});
-      setChatMsgObj((oldChatMsgObj: any) => [...oldChatMsgObj, data]);
-      if (data.type === 'BUTTON') {
-        setQuickBtnList(data.buttonFields);
-        setShowQuickBtns(true);
-      }
-    });
-    return () => {
-      msgRel(restartConv);
-      socket.current.removeAllListeners();
-      return socket.current.close();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const sendMsg = useCallback(
-    (actor: any, msg: any) => {
-      const createdObj = {
-        userId: userRef.current,
-        message: msg,
-        appId: SXP.appId,
-        projectId: SXP.pid,
-        version: SXP.version,
-      };
-      msgRel(createdObj);
-      const updateUser = {message: msg, actor: 'you'};
-      setChatMsgObj((oldChatMsgObj: any) => {
-        return [...oldChatMsgObj, updateUser];
-      });
-      setMessage('');
-      flatListRef.current?.scrollToEnd();
-    },
-    [msgRel]
+  const {quickBtnList, restart, sendMsg} = useSXPChat(
+    SXP.url,
+    SXP.path,
+    keycloak?.token ?? '',
+    SXP.pid,
+    SXP.appId,
+    SXP.version,
+    sxpEvent
   );
 
   return (
@@ -170,7 +100,7 @@ const Messaging = () => {
           onChangeText={setMessage}
           onSubmitEditing={() => {
             if (message.length > 0) {
-              sendMsg('you', message);
+              sendMsg(message);
             }
           }}
         />
@@ -182,7 +112,7 @@ const Messaging = () => {
           disabled={message.length === 0}
           text={'Send'}
           onPress={() => {
-            sendMsg('you', message);
+            sendMsg(message);
           }}
         />
       </View>
