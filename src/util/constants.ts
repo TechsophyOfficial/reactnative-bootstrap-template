@@ -32,15 +32,15 @@ export default keycloak;
 
 export const STRIPE_KEYS = {
   publishable_key:
-    'pk_test_51MEGqOSH315QcFT6FAC23mx7Izl41zm0AXNNJBPDDLFIXjWrLZHPxGRUyy32fplYf3u3PXKzLRvOVPe8mKIZ9jAN00rpj5sszh',
+    'pk_test_C23mx7I5sszh',
   secret_key:
-    'sk_test_51MEGqOSH315QcFT6neqtR8jzXptu92lLtFwIsxhCtmMxgTAtDjhMzVNPx90uRnexEuzRejkbqEE3RrhNBMDuXlem00ck842pDI',
+    'sk_test_secretekey',
 };
 
 export const RAZORPAY_KEYS = {
-  merchant_id: 'Kr6AuC9NTG3YXf',
-  key_id: 'rzp_test_N9aVLRM92gT1CY',
-  key_secret: 'BJf0iFxatZJYb7jxtlbRULbY',
+  merchant_id: 'Merchant_id',
+  key_id: 'RAZOR_PAY KEY ID',
+  key_secret: 'Client Secret',
 };
 
 export const SXP = {
