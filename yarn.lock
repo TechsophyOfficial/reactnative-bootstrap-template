@@ -1805,10 +1805,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stripe/stripe-react-native@^0.22.1":
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/@stripe/stripe-react-native/-/stripe-react-native-0.22.1.tgz#accaeb98381c6ccc2658c975d5e31e726b83cabb"
-  integrity sha512-L4UjvhgZir+jNvXS4lCNv8C8xWYOtH+n1YFAhuKVxA2tuRvWz2lJJ7U4bOpl3cJn1tPvIsvroCWx/Nra5Fgmgw==
+"@stripe/stripe-react-native@^0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-react-native/-/stripe-react-native-0.23.0.tgz#188030471b0d26ef5c2728ee9799f98047dfbb15"
+  integrity sha512-ucEDwZ93aHV4o/XTw5Jhte1GNWq9OIg7Es20ggnCuhL/OWY97/X6dK+BvN+XfvC9/fAZMqna1ZmKmZTyl9Jsng==
 
 "@svgr/babel-plugin-add-jsx-attribute@^6.5.1":
   version "6.5.1"
@@ -8451,21 +8451,20 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-"ts-react-native-barcode-scanner@.\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.3.tgz":
-  version "0.1.3"
-  resolved ".\\lib\\ts-react-native-barcode-scanner\\ts-react-native-barcode-scanner-0.1.3.tgz#148830d1f70bc3af0fc855831c801bf2969e6152"
+ts-react-native-barcode-scanner@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/ts-react-native-barcode-scanner/-/ts-react-native-barcode-scanner-0.1.4.tgz#caa499ca8bfdbbded63fdcd63c90fe8274c69a13"
+  integrity sha512-PlDL6VKqfZLvz4LGYCxyUZbsZrKn6kNKt/XxTbDciHJgdy4hJ2Duo2YCQAVmFIgZkYIZ4bfO6w9T0miptGY/7w==
 
-"ts-react-native-payments@.\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.6.tgz":
-  version "0.1.6"
-  resolved ".\\lib\\ts-react-native-payments\\ts-react-native-payments-0.1.6.tgz#d7e2046cda08536f54185125c8669247d5526349"
+ts-react-native-payments@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/ts-react-native-payments/-/ts-react-native-payments-0.1.7.tgz#1c456a9fcce7349c1e7dd68e48d6d8cff651b5d0"
+  integrity sha512-n6ltmHwjYXY4NWFTryoNLrg2SXHAd5ZQNH3fK//xXmq3yyUhOpJs4zJj1CVrvC9W0LP3BDM7kMvl/VPkPtx6Fg==
 
-"ts-react-native-sxp@.\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.0.tgz":
-  version "0.1.0"
-  resolved ".\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.0.tgz#1202f635e379d2efd61ebb08f9041ecb7062759a"
-
-"ts-react-native-sxp@.\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.1.tgz":
-  version "0.1.1"
-  resolved ".\\lib\\ts-react-native-sxp\\ts-react-native-sxp-0.1.1.tgz#fa764cb2e2a7ea19752f3c98c43373eedf6310e9"
+ts-react-native-sxp@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ts-react-native-sxp/-/ts-react-native-sxp-0.1.2.tgz#39a7576f0c89c0dce5542dd4747afb14c63844df"
+  integrity sha512-12DfUZGJCKqFA838Xz7bJbC4jq5x4h+jB4wlKAMHVjLL732gJxcF700hb0KPtt2dnh0UQ2R+Q8zoqJk3xnCUtQ==
 
 tslib@^1.8.1:
   version "1.14.1"

@@ -1,0 +1,12 @@
+diff --git a/node_modules/vision-camera-code-scanner/vision-camera-code-scanner.podspec b/node_modules/vision-camera-code-scanner/vision-camera-code-scanner.podspec
+index 5807c31..eca8566 100644
+--- a/node_modules/vision-camera-code-scanner/vision-camera-code-scanner.podspec
++++ b/node_modules/vision-camera-code-scanner/vision-camera-code-scanner.podspec
+@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
+   s.homepage     = package["homepage"]
+   s.license      = package["license"]
+   s.authors      = package["author"]
++  s.static_framework = true
+ 
+   s.platforms    = { :ios => "11.0" }
+   s.source       = { :git => "https://github.com/rodgomesc/vision-camera-code-scanner.git", :tag => "#{s.version}" }
