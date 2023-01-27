@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {StatusBar, TouchableOpacity} from 'react-native';
 import {withTheme} from 'react-native-paper';
 import {dip} from '../util/function';
 import {ChevronLeft} from '../util/icons';

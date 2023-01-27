@@ -85,7 +85,9 @@ const Profile = ({navigation}: Props) => {
             position={'bottom'}
           />
         </View>
-        <Text style={{fontSize: dip(18)}}>{LegalSettingsHeader}</Text>
+        <Text style={{fontSize: dip(18), marginTop: theme.spacing}}>
+          {LegalSettingsHeader}
+        </Text>
         <View style={{marginTop: theme.spacing}}>
           <ListButton
             text={TermsHeader}
@@ -137,7 +139,9 @@ const Profile = ({navigation}: Props) => {
             position={'bottom'}
           />
         </View>
-        <Text style={{fontSize: dip(18)}}>{AccountsHeader}</Text>
+        <Text style={{fontSize: dip(18), marginTop: theme.spacing}}>
+          {AccountsHeader}
+        </Text>
         <View style={{marginTop: theme.spacing}}>
           <ListButton
             text={keycloak?.token ? LogoutButton : LoginButtonProfile}

@@ -53,27 +53,25 @@ const App = () => {
   }, [storageItem]);
 
   return (
-    <AppSettingsContext.Provider value={AppContextObject}>
-      <PaperProvider theme={mainTheme}>
-        <SafeAreaView style={backgroundStyle}>
-          <StatusBar
-            barStyle={'dark-content'}
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          <ReactNativeKeycloakProvider
-            authClient={keycloak}
-            initOptions={{
-              redirectUri: 'techsophy://Homepage',
-              postLogoutRedirectUri: 'techsophy://Homepage',
-              inAppBrowserOptions: {},
-            }}>
-            <NavigationContainer onReady={() => RNBootSplash.hide()}>
-              <MainStack />
-            </NavigationContainer>
-          </ReactNativeKeycloakProvider>
-        </SafeAreaView>
-      </PaperProvider>
-    </AppSettingsContext.Provider>
+    <>
+      <AppSettingsContext.Provider value={AppContextObject}>
+        <PaperProvider theme={mainTheme}>
+          <SafeAreaView style={backgroundStyle}>
+            <ReactNativeKeycloakProvider
+              authClient={keycloak}
+              initOptions={{
+                redirectUri: 'techsophy://Homepage',
+                postLogoutRedirectUri: 'techsophy://Homepage',
+                inAppBrowserOptions: {},
+              }}>
+              <NavigationContainer onReady={() => RNBootSplash.hide()}>
+                <MainStack />
+              </NavigationContainer>
+            </ReactNativeKeycloakProvider>
+          </SafeAreaView>
+        </PaperProvider>
+      </AppSettingsContext.Provider>
+    </>
   );
 };
 

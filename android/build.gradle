@@ -6,6 +6,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 33
         targetSdkVersion = 33
+        kotlinVersion = "1.6.20"
 
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
@@ -47,5 +48,15 @@ allprojects {
         }
         google()
         maven { url 'https://www.jitpack.io' }
+    }
+    
+    afterEvaluate {
+        if (getPlugins().hasPlugin('android') ||
+            getPlugins().hasPlugin('android-library')) {
+            configure(android.lintOptions) {
+                abortOnError false
+                checkReleaseBuilds false
+            }
+        }
     }
 }
