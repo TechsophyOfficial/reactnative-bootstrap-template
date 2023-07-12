@@ -19,7 +19,6 @@
         "@react-navigation/bottom-tabs": "^6.4.1",
         "@react-navigation/native": "^6.0.14",
         "@react-navigation/native-stack": "^6.9.2",
-        "@stripe/stripe-react-native": "^0.23.0",
         "axios": "^1.2.0",
         "deprecated-react-native-prop-types": "^2.3.0",
         "moment": "^2.29.4",
@@ -33,11 +32,10 @@
         "react-native-paper": "^4.12.5",
         "react-native-permissions": "^3.6.1",
         "react-native-pixel-perfect": "^1.0.2",
-        "react-native-razorpay": "^2.3.0",
         "react-native-reanimated": "^2.13.0",
         "react-native-responsive-screen": "^1.4.2",
         "react-native-safe-area-context": "^4.4.1",
-        "react-native-screens": "^3.18.2",
+        "react-native-screens": "^3.22.0",
         "react-native-select-dropdown": "^3.0.3",
         "react-native-snap-carousel": "^3.9.1",
         "react-native-svg": "^13.6.0",
@@ -46,10 +44,7 @@
         "react-navigation": "^4.4.4",
         "react-query": "^3.39.2",
         "socket.io-client": "2.3.0",
-        "ts-react-native-barcode-scanner": "^0.1.4",
-        "ts-react-native-payments": "^0.1.7",
-        "ts-react-native-sxp": "^0.1.2",
-        "vision-camera-code-scanner": "^0.2.0"
+        "ts-react-native-sxp": "^0.1.2"
     },
     "devDependencies": {
         "@babel/core": "^7.12.9",
