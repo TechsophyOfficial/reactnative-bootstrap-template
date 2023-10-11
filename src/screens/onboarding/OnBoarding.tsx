@@ -100,12 +100,12 @@ const OnBoarding = ({navigation}: Props) => {
             navigation.navigate(keycloak?.token ? 'HomeTabs' : 'AuthStack');
           }}
         />
-        <BlankButton
-          text={OnBoardingButton2}
+        {/* <BlankButton
+           text={OnBoardingButton2}
           onPress={() => {
             navigation.navigate('HomeTabs');
           }}
-        />
+        /> */}
       </View>
     </View>
   );

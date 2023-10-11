@@ -1,10 +1,9 @@
-import {initStripe} from '@stripe/stripe-react-native';
 import React, {useEffect, useState} from 'react';
-import {
-  usePaypalPayment,
-  useRazorpayPayment,
-  useStripePayment,
-} from 'ts-react-native-payments';
+// import {
+//   usePaypalPayment,
+//   useRazorpayPayment,
+//   useStripePayment,
+// } from 'ts-react-native-payments';
 import PrimaryButton from '../../components/PrimaryButton';
 import ScreenHeader from '../../components/ScreenHeader';
 import Spinner from '../../components/Spinner';
@@ -28,13 +27,13 @@ const Product = ({navigation}: Props) => {
   const [amount, setAmount] = useState('100');
   const [currency, setCurrency] = useState('USD');
 
-  const {processPayment: processRazorpay} = useRazorpayPayment(
-    RAZORPAY_KEYS.key_id
-  );
-  const {processPayment: processStripe} = useStripePayment({
-    publishableKey: STRIPE_KEYS.publishable_key,
-  });
-  const {processPayment: processPaypal} = usePaypalPayment(true);
+  // const {processPayment: processRazorpay} = useRazorpayPayment(
+  //   RAZORPAY_KEYS.key_id
+  // );
+  // const {processPayment: processStripe} = useStripePayment({
+  //   publishableKey: STRIPE_KEYS.publishable_key,
+  // });
+  // const {processPayment: processPaypal} = usePaypalPayment(true);
 
   const {profile} = useOnlyKeycloak();
 
@@ -62,19 +61,19 @@ const Product = ({navigation}: Props) => {
           onPress={async () => {
             const razorpayResponse = await createRazorpay(amount, currency);
             console.log(razorpayResponse.data);
-            processRazorpay(parseFloat(amount), {
-              description: 'Description',
-              order_id: razorpayResponse.data.order_id,
-              prefil: {
-                email: profile?.email,
-                contact: '',
-                name: profile?.full_name,
-              },
-              theme: '',
-              image: '',
-              currency: 'USD',
-              name: '',
-            });
+            // processRazorpay(parseFloat(amount), {
+            //   description: 'Description',
+            //   order_id: razorpayResponse.data.order_id,
+            //   prefil: {
+            //     email: profile?.email,
+            //     contact: '',
+            //     name: profile?.full_name,
+            //   },
+            //   theme: '',
+            //   image: '',
+            //   currency: 'USD',
+            //   name: '',
+            // });
           }}
         />
         <PrimaryButton
@@ -87,10 +86,9 @@ const Product = ({navigation}: Props) => {
                 parseFloat(amount),
                 currency
               );
-              const response = await processPaypal(
-                paypalResponse.data.order_id
-              );
-              console.log(response);
+              // const response = await processPaypal(
+              //   paypalResponse.data.order_id
+              // );
             } catch (error) {
               console.error(error);
             }
@@ -102,13 +100,12 @@ const Product = ({navigation}: Props) => {
           onPress={async () => {
             const stripeResponse = await createStripe(amount, currency);
             console.log(stripeResponse.data);
-            const result = await processStripe({
-              merchantDisplayName: 'Techsophy',
-              customerId: stripeResponse.data.customer,
-              paymentIntentClientSecret: stripeResponse.data.paymentIntent,
-              customerEphemeralKeySecret: stripeResponse.data.ephemeralKey,
-            });
-            console.log(result);
+            // const result = await processStripe({
+            //   merchantDisplayName: 'Techsophy',
+            //   customerId: stripeResponse.data.customer,
+            //   paymentIntentClientSecret: stripeResponse.data.paymentIntent,
+            //   customerEphemeralKeySecret: stripeResponse.data.ephemeralKey,
+            // });
           }}
         />
       </View>

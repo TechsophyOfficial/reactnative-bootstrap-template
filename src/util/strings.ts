@@ -1,7 +1,7 @@
 export const AppName = 'App';
-export const OnBoardingHead1 = 'Welcome To App';
+export const OnBoardingHead1 = 'Welcome To Cybersophy';
 export const WelcomeText1 =
-  'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of it over 2000 years old.';
+  'Techsophy base Solutions';
 export const OnBoardingButton1 = 'Get Started';
 export const OnBoardingButton2 = 'SKIP';
 export const SignUpButton = 'Sign Up';
