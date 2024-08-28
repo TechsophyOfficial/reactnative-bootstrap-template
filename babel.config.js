@@ -1,11 +1,7 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets: ['module:@react-native/babel-preset'],
   plugins: [
-    [
-      'react-native-reanimated/plugin',
-      {
-        globals: ['__scanCodes'],
-      },
-    ],
+    /// This Plugin should be last
+    'react-native-reanimated/plugin',
   ],
 };

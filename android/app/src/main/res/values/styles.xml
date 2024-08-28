@@ -1,15 +1,31 @@
-<resources>
+<!-- <resources>
 
-    <!-- Base application theme. -->
+  
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
+   
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
 
-    <style name="BootTheme" parent="Theme.SplashScreen">
+    <style name="BootTheme" parent="Theme.EdgeToEdge">
         <item name="windowSplashScreenBackground">@color/bootsplash_background</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/bootsplash_logo</item>
         <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
+</resources> -->
+
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+        <!-- <item name="android:windowLightStatusBar">true</item> -->
+    </style>
+
+    <style name="BootTheme" parent="Theme.BootSplash.TransparentStatus">
+        <!-- enforce status bar style as the example app doesn't support dark mode -->
+        <item name="darkContentBarsStyle">true</item>
+
+        <item name="bootSplashBackground">@color/bootsplash_background</item>
+        <item name="bootSplashLogo">@mipmap/bootsplash_logo</item>
+        <item name="postBootSplashTheme">@style/AppTheme</item>
+    </style>
 </resources>

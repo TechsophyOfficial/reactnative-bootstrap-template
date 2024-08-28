@@ -2,7 +2,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useCallback} from 'react';
 import {Image} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Carousel from 'react-native-snap-carousel';
+import Carousel from '../../components/CustomCarousel';
 import BlankButton from '../../components/BlankButton';
 import PrimaryButton from '../../components/PrimaryButton';
 import Text from '../../components/Text';
@@ -61,7 +61,7 @@ const OnBoarding = ({navigation}: Props) => {
         </View>
       );
     },
-    [theme]
+    [theme],
   );
   return (
     <View
