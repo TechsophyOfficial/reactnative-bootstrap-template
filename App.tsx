@@ -57,6 +57,7 @@ const App = () => {
       <AppSettingsContext.Provider value={AppContextObject}>
         <StatusBar barStyle={'dark-content'} backgroundColor={'#ffffff'} />
         <PaperProvider theme={mainTheme}>
+          ``
           <SafeAreaView style={backgroundStyle}>
             <ReactNativeKeycloakProvider
               authClient={keycloak}
