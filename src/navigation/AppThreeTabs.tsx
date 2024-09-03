@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AppThreeHome from '../Views/AppThree/AppThreeHome';
+import DrawerScreen from './Drawer';
 
 const AppThreeTabs = () => {
   const BottomTabsNav = createBottomTabNavigator();
@@ -13,7 +14,7 @@ const AppThreeTabs = () => {
       //     return <NavBar {...props} />;
       //   }}
     >
-      <BottomTabsNav.Screen name="AppOneHome" component={AppThreeHome} />
+      <BottomTabsNav.Screen name="AppThreeHome" component={DrawerScreen} />
     </BottomTabsNav.Navigator>
   );
 };

@@ -6,7 +6,7 @@ import {
   TextStyle,
   View,
 } from 'react-native';
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import HomeHeader from '../../Components/HomeHeader';
 import {theme} from '../../util/theme';
 import HorizontalListItem from '../../Components/HorizontalListItem';
@@ -18,15 +18,33 @@ import ListItem from '../../Components/ListItem';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from '../../i18n/i18n';
 import {useTranslation} from 'react-i18next';
+import {useFocusEffect} from '@react-navigation/native';
+import {useDrawerStatus} from '@react-navigation/drawer';
 
 const AppThreeHome = ({navigation}: any) => {
   const [language, setLanguage] = useState('');
+  const drawerStatus = useDrawerStatus();
 
   const {t} = useTranslation();
 
   useEffect(() => {
     setDefaultLanguage();
   }, []);
+
+  const onDrawerClose = async () => {
+    let lang = await AsyncStorage.getItem('app3');
+    setLanguage(lang ?? 'EN');
+    i18n.changeLanguage(lang ? lang : 'EN');
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      // This will run when the screen is focused
+      if (drawerStatus === 'closed') {
+        onDrawerClose(); // Call the function when drawer is closed
+      }
+    }, [drawerStatus])
+  );
 
   const setDefaultLanguage = async () => {
     let lang = await AsyncStorage.getItem('app3');
@@ -57,7 +75,7 @@ const AppThreeHome = ({navigation}: any) => {
       <View style={{flex: 1, width: '100%'}}>
         <View style={{flex: 1}}>
           <HomeHeader
-            onProfilePress={() => console.log('object')}
+            onProfilePress={() => navigation.openDrawer()}
             handleBack={() => navigation?.push('Home')}
             back={true}
             value={language}
