@@ -4,26 +4,12 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import React from 'react';
-import Login from '../screens/auth/Login';
-import Otp from '../screens/auth/Otp';
-import Password from '../screens/auth/Password';
-import SignUp from '../screens/auth/SignUp';
-import {MainStackParam} from './MainStack';
+import Login from '../Views/Authentication/Login';
+import Otp from '../Views/Authentication/Otp';
+import Password from '../Views/Authentication/Password';
+import SignUp from '../Views/Authentication/SignUp';
 
-export type AuthStackParam = {
-  Login: undefined;
-  Password: undefined;
-  Otp: undefined;
-  SignUp: undefined;
-};
-
-export type AuthComposite<T extends keyof AuthStackParam> =
-  CompositeScreenProps<
-    NativeStackScreenProps<AuthStackParam, T>,
-    NativeStackScreenProps<MainStackParam>
-  >;
-
-const AuthStackNav = createNativeStackNavigator<AuthStackParam>();
+const AuthStackNav = createNativeStackNavigator();
 
 const AuthStack = () => {
   return (

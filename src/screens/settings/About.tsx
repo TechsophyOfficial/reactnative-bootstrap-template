@@ -1,8 +1,8 @@
 import React from 'react';
 import {Share} from 'react-native';
 import Package from '../../../package.json';
-import ScreenHeader from '../../components/ScreenHeader';
-import View from '../../components/View';
+import ScreenHeader from '../../Components/ScreenHeader';
+import View from '../../Components/View';
 import useTheme from '../../hooks/useTheme';
 import {ProfileComposite} from '../../navigation/ProfileStack';
 import {Apple, Share as ShareIcon, Star} from '../../util/icons';

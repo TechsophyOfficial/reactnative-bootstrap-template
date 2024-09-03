@@ -15,6 +15,18 @@
 		716F7B29300C826B122F057B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E7DAA2938B7551A596211921 /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-TechsophyBase-TechsophyBaseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-TechsophyBase-TechsophyBaseTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F65F38732C81A14B00BA4660 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F38662C81A14B00BA4660 /* OpenSans-Bold.ttf */; };
+		F65F38742C81A14B00BA4660 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F38672C81A14B00BA4660 /* OpenSans-BoldItalic.ttf */; };
+		F65F38752C81A14B00BA4660 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F38682C81A14B00BA4660 /* OpenSans-ExtraBold.ttf */; };
+		F65F38762C81A14B00BA4660 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F38692C81A14B00BA4660 /* OpenSans-ExtraBoldItalic.ttf */; };
+		F65F38772C81A14B00BA4660 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F386A2C81A14B00BA4660 /* OpenSans-Italic.ttf */; };
+		F65F38782C81A14B00BA4660 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F386B2C81A14B00BA4660 /* OpenSans-Light.ttf */; };
+		F65F38792C81A14B00BA4660 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F386C2C81A14B00BA4660 /* OpenSans-LightItalic.ttf */; };
+		F65F387A2C81A14B00BA4660 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F386D2C81A14B00BA4660 /* OpenSans-Medium.ttf */; };
+		F65F387B2C81A14B00BA4660 /* OpenSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F386E2C81A14B00BA4660 /* OpenSans-MediumItalic.ttf */; };
+		F65F387C2C81A14B00BA4660 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F386F2C81A14B00BA4660 /* OpenSans-Regular.ttf */; };
+		F65F387D2C81A14B00BA4660 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F38702C81A14B00BA4660 /* OpenSans-SemiBold.ttf */; };
+		F65F387E2C81A14B00BA4660 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F65F38712C81A14B00BA4660 /* OpenSans-SemiBoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +57,20 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-TechsophyBase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TechsophyBase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TechsophyBase/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-TechsophyBase-TechsophyBaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechsophyBase-TechsophyBaseTests.release.xcconfig"; path = "Target Support Files/Pods-TechsophyBase-TechsophyBaseTests/Pods-TechsophyBase-TechsophyBaseTests.release.xcconfig"; sourceTree = "<group>"; };
-		E7DAA2938B7551A596211921 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = TechsophyBase/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		E7DAA2938B7551A596211921 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = TechsophyBase/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F65F38662C81A14B00BA4660 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		F65F38672C81A14B00BA4660 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		F65F38682C81A14B00BA4660 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F65F38692C81A14B00BA4660 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		F65F386A2C81A14B00BA4660 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		F65F386B2C81A14B00BA4660 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		F65F386C2C81A14B00BA4660 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		F65F386D2C81A14B00BA4660 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Medium.ttf"; sourceTree = "<group>"; };
+		F65F386E2C81A14B00BA4660 /* OpenSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		F65F386F2C81A14B00BA4660 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		F65F38702C81A14B00BA4660 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		F65F38712C81A14B00BA4660 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +145,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F65F38722C81A14B00BA4660 /* fonts */,
 				13B07FAE1A68108700A75B9A /* TechsophyBase */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TechsophyBaseTests */,
@@ -151,6 +176,26 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-TechsophyBase-TechsophyBaseTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F65F38722C81A14B00BA4660 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F65F38662C81A14B00BA4660 /* OpenSans-Bold.ttf */,
+				F65F38672C81A14B00BA4660 /* OpenSans-BoldItalic.ttf */,
+				F65F38682C81A14B00BA4660 /* OpenSans-ExtraBold.ttf */,
+				F65F38692C81A14B00BA4660 /* OpenSans-ExtraBoldItalic.ttf */,
+				F65F386A2C81A14B00BA4660 /* OpenSans-Italic.ttf */,
+				F65F386B2C81A14B00BA4660 /* OpenSans-Light.ttf */,
+				F65F386C2C81A14B00BA4660 /* OpenSans-LightItalic.ttf */,
+				F65F386D2C81A14B00BA4660 /* OpenSans-Medium.ttf */,
+				F65F386E2C81A14B00BA4660 /* OpenSans-MediumItalic.ttf */,
+				F65F386F2C81A14B00BA4660 /* OpenSans-Regular.ttf */,
+				F65F38702C81A14B00BA4660 /* OpenSans-SemiBold.ttf */,
+				F65F38712C81A14B00BA4660 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			name = fonts;
+			path = ../assets/fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,8 +292,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				F65F38772C81A14B00BA4660 /* OpenSans-Italic.ttf in Resources */,
+				F65F387D2C81A14B00BA4660 /* OpenSans-SemiBold.ttf in Resources */,
+				F65F38762C81A14B00BA4660 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				F65F387B2C81A14B00BA4660 /* OpenSans-MediumItalic.ttf in Resources */,
+				F65F38792C81A14B00BA4660 /* OpenSans-LightItalic.ttf in Resources */,
+				F65F38732C81A14B00BA4660 /* OpenSans-Bold.ttf in Resources */,
 				716F7B29300C826B122F057B /* PrivacyInfo.xcprivacy in Resources */,
+				F65F387E2C81A14B00BA4660 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				F65F38782C81A14B00BA4660 /* OpenSans-Light.ttf in Resources */,
+				F65F387A2C81A14B00BA4660 /* OpenSans-Medium.ttf in Resources */,
+				F65F38742C81A14B00BA4660 /* OpenSans-BoldItalic.ttf in Resources */,
+				F65F387C2C81A14B00BA4660 /* OpenSans-Regular.ttf in Resources */,
+				F65F38752C81A14B00BA4660 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,10 +647,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -666,10 +720,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

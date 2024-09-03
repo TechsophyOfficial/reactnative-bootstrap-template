@@ -2,11 +2,11 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useCallback} from 'react';
 import {Image} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Carousel from '../../components/CustomCarousel';
-import BlankButton from '../../components/BlankButton';
-import PrimaryButton from '../../components/PrimaryButton';
-import Text from '../../components/Text';
-import View from '../../components/View';
+import Carousel from '../../Components/CustomCarousel';
+import BlankButton from '../../Components/BlankButton';
+import PrimaryButton from '../../Components/PrimaryButton';
+import Text from '../../Components/Text';
+import View from '../../Components/View';
 import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {MainStackParam} from '../../navigation/MainStack';
@@ -61,7 +61,7 @@ const OnBoarding = ({navigation}: Props) => {
         </View>
       );
     },
-    [theme],
+    [theme]
   );
   return (
     <View
@@ -95,7 +95,7 @@ const OnBoarding = ({navigation}: Props) => {
       </View>
       <View style={{flex: 2}}>
         <PrimaryButton
-          text={OnBoardingButton1}
+          text={OnBoardingButton1 + 'sdsd'}
           onPress={() => {
             navigation.navigate(keycloak?.token ? 'HomeTabs' : 'AuthStack');
           }}

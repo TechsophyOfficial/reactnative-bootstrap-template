@@ -2,6 +2,7 @@ import Add from '../../assets/svg/Add.svg';
 import Apple from '../../assets/svg/Apple.svg';
 import Calendar from '../../assets/svg/Calendar.svg';
 import ChevronDown from '../../assets/svg/ChevronDown.svg';
+import ChevronUp from '../../assets/svg/ChevronUp.svg';
 import ChevronLeft from '../../assets/svg/ChevronLeft.svg';
 import ChevronRight from '../../assets/svg/ChevronRight.svg';
 import Content from '../../assets/svg/Content.svg';
@@ -36,6 +37,7 @@ import Tick from '../../assets/svg/Tick.svg';
 export {
   Add,
   Calendar,
+  ChevronUp,
   ChevronDown,
   ChevronLeft,
   ChevronRight,

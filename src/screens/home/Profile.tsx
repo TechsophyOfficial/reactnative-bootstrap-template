@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import Alert from '../../components/Alert';
-import Divider from '../../components/Divider';
-import ListButton from '../../components/ListButton';
-import Prompt from '../../components/Prompt';
-import Text from '../../components/Text';
-import View from '../../components/View';
+import Alert from '../../Components/Alert';
+import Divider from '../../Components/Divider';
+import ListButton from '../../Components/ListButton';
+import Prompt from '../../Components/Prompt';
+import Text from '../../Components/Text';
+import View from '../../Components/View';
 import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {ProfileComposite} from '../../navigation/ProfileStack';

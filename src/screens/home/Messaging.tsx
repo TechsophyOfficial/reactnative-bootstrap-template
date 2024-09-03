@@ -2,12 +2,12 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {FlatList} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import io from 'socket.io-client';
-import PrimaryButton from '../../components/PrimaryButton';
-import ScreenHeader from '../../components/ScreenHeader';
+import PrimaryButton from '../../Components/PrimaryButton';
+import ScreenHeader from '../../Components/ScreenHeader';
 
-import Text from '../../components/Text';
-import TextInput from '../../components/TextInput';
-import View from '../../components/View';
+import Text from '../../Components/Text';
+import TextInput from '../../Components/TextInput';
+import View from '../../Components/View';
 import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {SXP, SXPCommands} from '../../util/constants';

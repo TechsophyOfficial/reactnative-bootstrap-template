@@ -1,9 +1,9 @@
 import moment from 'moment';
 import React, {useState, useCallback} from 'react';
 import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
-import ScreenHeader from '../../components/ScreenHeader';
-import Text from '../../components/Text';
-import View from '../../components/View';
+import ScreenHeader from '../../Components/ScreenHeader';
+import Text from '../../Components/Text';
+import View from '../../Components/View';
 import useTheme from '../../hooks/useTheme';
 import {HomeComposite} from '../../navigation/HomeTabs';
 import {DATE_FORMAT} from '../../util/constants';

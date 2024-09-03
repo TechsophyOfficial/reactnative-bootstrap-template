@@ -12,9 +12,13 @@ import {ThemeOverride} from '../util/theme';
 import View from './View';
 
 const SearchBox = (
-  props: ViewProps & {theme: ThemeOverride; textInputProps: TextInputProps}
+  props: ViewProps & {
+    theme: ThemeOverride;
+    label: string;
+    textInputProps: TextInputProps;
+  }
 ) => {
-  const {textInputProps, theme, ...viewProps} = props;
+  const {textInputProps, label, theme, ...viewProps} = props;
   return (
     <View {...viewProps} style={[{height: theme.buttonHeight}, viewProps]}>
       <View
@@ -44,7 +48,7 @@ const SearchBox = (
           },
           props.style,
         ]}
-        placeholder={SearchPlaceholder}
+        placeholder={label}
         placeholderTextColor={theme.colors.placeholder}
       />
     </View>

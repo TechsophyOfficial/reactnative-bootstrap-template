@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, ViewStyle} from 'react-native';
-import Text from '../../components/Text';
-import View from '../../components/View';
+import Text from '../../Components/Text';
+import View from '../../Components/View';
 
 const ScannerScreen = () => {
   // const devices = useCameraDevices();

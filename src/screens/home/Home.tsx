@@ -1,9 +1,9 @@
 import React, {useMemo} from 'react';
 import {FlatList, TextStyle, TouchableOpacity} from 'react-native';
-import HorizontalListItem from '../../components/HorizontalListItem';
-import SearchBox from '../../components/SearchBox';
-import Text from '../../components/Text';
-import View from '../../components/View';
+import HorizontalListItem from '../../Components/HorizontalListItem';
+import SearchBox from '../../Components/SearchBox';
+import Text from '../../Components/Text';
+import View from '../../Components/View';
 import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {HomeComposite} from '../../navigation/HomeTabs';
@@ -71,19 +71,12 @@ const Home = ({navigation}: Props) => {
       <FlatList
         horizontal={true}
         data={[0, 1, 2, 4, 5, 6, 7]}
-        contentContainerStyle={{marginTop: theme.spacing}}
-        renderItem={({item}) => {
-          return (
-            <HorizontalListItem
-              item={item}
-              onPress={() => {
-                navigation.navigate('Product');
-              }}
-            />
-          );
-        }}
-        style={{paddingHorizontal: theme.paddingHorizontal}}
-        snapToInterval={dip(130) + theme.spacing}
+        renderItem={({item}) => (
+          <HorizontalListItem item={item} theme={theme} />
+        )}
+        keyExtractor={item => item.toString()}
+        numColumns={2} // Set number of columns to 2
+        columnWrapperStyle={{justifyContent: 'space-between'}} // Space between the items
       />
       <View style={{paddingHorizontal: theme.paddingHorizontal}}>
         <Text style={style.heading}>{List2Heading}</Text>

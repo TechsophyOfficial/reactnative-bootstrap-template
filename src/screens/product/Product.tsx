@@ -4,11 +4,11 @@ import React, {useEffect, useState} from 'react';
 //   useRazorpayPayment,
 //   useStripePayment,
 // } from 'ts-react-native-payments';
-import PrimaryButton from '../../components/PrimaryButton';
-import ScreenHeader from '../../components/ScreenHeader';
-import Spinner from '../../components/Spinner';
-import TextInput from '../../components/TextInput';
-import View from '../../components/View';
+import PrimaryButton from '../../Components/PrimaryButton';
+import ScreenHeader from '../../Components/ScreenHeader';
+import Spinner from '../../Components/Spinner';
+import TextInput from '../../Components/TextInput';
+import View from '../../Components/View';
 import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {ProductComposite} from '../../navigation/ProductStack';

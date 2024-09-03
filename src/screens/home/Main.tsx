@@ -1,9 +1,9 @@
 import React from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import ListItem from '../../components/ListItem';
-import Text from '../../components/Text';
-import View from '../../components/View';
+import ListItem from '../../Components/ListItem';
+import Text from '../../Components/Text';
+import View from '../../Components/View';
 import useTheme from '../../hooks/useTheme';
 import {HomeComposite} from '../../navigation/HomeTabs';
 import {dip} from '../../util/function';

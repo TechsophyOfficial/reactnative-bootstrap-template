@@ -17,6 +17,7 @@ const SwitchButton = (
   const {label, theme, checked, setChecked, ...viewProps} = props;
   return (
     <TouchableOpacity
+      activeOpacity={0.9}
       {...viewProps}
       style={[
         {
@@ -33,7 +34,7 @@ const SwitchButton = (
       onPress={() => {
         setChecked(!checked);
       }}>
-      <Text style={{fontSize: dip(16)}}>{label}</Text>
+      <Text style={{fontSize: dip(16)}}>{label}ss</Text>
       <Switch checked={checked} />
     </TouchableOpacity>
   );

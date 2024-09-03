@@ -2,8 +2,8 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {withTheme} from 'react-native-paper';
 import {SvgProps} from 'react-native-svg';
-import Text from '../../../components/Text';
-import View from '../../../components/View';
+import Text from '../../../Components/Text';
+import View from '../../../Components/View';
 import {dip} from '../../../util/function';
 import {ThemeOverride} from '../../../util/theme';
 

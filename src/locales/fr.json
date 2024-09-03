@@ -1,0 +1,12 @@
+{
+  "greeting": "Bonjour",
+  "name": "Jean",
+  "home": "d'accueil",
+  "somefeautredItems": "Quelques articles en vedette",
+  "favorites": "favoris",
+  "appOne": "App une",
+  "apptwo": "App deux",
+  "appthree": "App trois",
+  "search": "recherche",
+  "productPage": "Page produit"
+}

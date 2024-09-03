@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import Alert from '../../components/Alert';
-import PrimaryButton from '../../components/PrimaryButton';
-import Radio from '../../components/Radio';
-import ScreenHeader from '../../components/ScreenHeader';
-import TextInput from '../../components/TextInput';
-import View from '../../components/View';
+import Alert from '../../Components/Alert';
+import PrimaryButton from '../../Components/PrimaryButton';
+import Radio from '../../Components/Radio';
+import ScreenHeader from '../../Components/ScreenHeader';
+import TextInput from '../../Components/TextInput';
+import View from '../../Components/View';
 import useOnlyKeycloak from '../../hooks/useOnlyKeycloak';
 import useTheme from '../../hooks/useTheme';
 import {ProfileComposite} from '../../navigation/ProfileStack';

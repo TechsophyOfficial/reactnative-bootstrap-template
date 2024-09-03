@@ -9,6 +9,9 @@ import useAsyncStorage from './src/hooks/useAsyncStorage';
 import MainStack from './src/navigation/MainStack';
 import keycloak from './src/util/constants';
 import {theme, theme2, theme3} from './src/util/theme';
+import MainRoute from './src/navigation/MainRoute';
+import './src/i18n/i18n';
+import 'intl-pluralrules';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -66,7 +69,7 @@ const App = () => {
                 inAppBrowserOptions: {},
               }}>
               <NavigationContainer onReady={() => RNBootSplash.hide()}>
-                <MainStack />
+                <MainRoute />
               </NavigationContainer>
             </ReactNativeKeycloakProvider>
           </SafeAreaView>

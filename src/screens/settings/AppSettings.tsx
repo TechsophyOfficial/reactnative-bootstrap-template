@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import PrimaryButton from '../../components/PrimaryButton';
-import ScreenHeader from '../../components/ScreenHeader';
-import Spinner from '../../components/Spinner';
-import SwitchButton from '../../components/SwitchButton';
-import View from '../../components/View';
+import PrimaryButton from '../../Components/PrimaryButton';
+import ScreenHeader from '../../Components/ScreenHeader';
+import Spinner from '../../Components/Spinner';
+import SwitchButton from '../../Components/SwitchButton';
+import View from '../../Components/View';
 import {useAppSettingsContext} from '../../context/appSettings';
 import useAsyncStorage from '../../hooks/useAsyncStorage';
 import useTheme from '../../hooks/useTheme';
@@ -29,9 +29,12 @@ const AppSettings = ({navigation}: Props) => {
         }}>
         <SwitchButton
           style={{marginTop: theme.spacing}}
-          label="App Lock"
+          label="App Locks"
           checked={appLock}
-          setChecked={setAppLock}
+          setChecked={checked => {
+            console.log('LocationContextLocationContext');
+            setAppLock(checked);
+          }}
         />
         <Spinner
           style={{marginTop: theme.spacing}}
