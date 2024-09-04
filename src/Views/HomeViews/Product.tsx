@@ -20,6 +20,7 @@ import {
 import HomeHeader from '../../Components/HomeHeader';
 import {useTranslation} from 'react-i18next';
 import i18n from '../../i18n/i18n';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Product = ({navigation}: any) => {
   const theme = useTheme();
@@ -29,7 +30,7 @@ const Product = ({navigation}: any) => {
 
   const {profile} = useOnlyKeycloak();
 
-  const [language, setLanguage] = useState('EN');
+  const [language, setLanguage] = useState('');
 
   const {t} = useTranslation();
 
@@ -37,9 +38,27 @@ const Product = ({navigation}: any) => {
     i18n.changeLanguage('fr');
   }, []);
 
-  const onLanguageChange = (lang: any) => {
+  useEffect(() => {
+    setDefaultLanguage();
+  }, []);
+
+  const setDefaultLanguage = async () => {
+    let lang = await AsyncStorage.getItem('global');
+    console.log('onLanguageChange global', lang);
     setLanguage(lang);
+    i18n.changeLanguage(lang ? lang : 'EN');
   };
+
+  const onLanguageChange = (lang: any) => {
+    console.log('onLanguageChange', lang);
+    setLanguage(lang);
+    AsyncStorage.setItem('global', lang);
+    i18n.changeLanguage(lang);
+  };
+
+  // const onLanguageChange = (lang: any) => {
+  //   setLanguage(lang);
+  // };
 
   return (
     <View style={{flex: 1}}>
@@ -49,7 +68,7 @@ const Product = ({navigation}: any) => {
           onProfilePress={() => console.log('object')}
           handleBack={() => navigation?.goBack()}
           back={true}
-          label={t('productPage')}
+          label={t('appthree')}
           value={language}
           language={false}
           onLanguageChange={(lang: any) => onLanguageChange(lang)}
