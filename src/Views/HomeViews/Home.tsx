@@ -58,18 +58,27 @@ const Home = ({navigation}) => {
       name: 'appOne',
       id: 1,
       navigation: 'AppOne',
+      role: 'Practitioner',
     },
     {
       name: 'apptwo',
       id: 2,
       navigation: 'AppTwo',
+      role: 'Practitioner',
     },
     {
       name: 'appthree',
       id: 3,
       navigation: 'AppThree',
+      // role: 'Patient',
+      role: 'Practitioner',
     },
   ];
+
+  const userRole = 'Practitioner'; // Set this value to the role of the logged-in user
+  // const userRole = 'Patient';
+  // Filter the data based on the user's role
+  const filteredData = data.filter(item => item.role === userRole);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -88,7 +97,7 @@ const Home = ({navigation}) => {
         <View style={{flex: 10, width: '100%'}}>
           <FlatList
             // horizontal={true}
-            data={data}
+            data={filteredData}
             renderItem={({item}) => (
               <HorizontalListItem
                 onPress={() => navigation.push(item?.navigation)}
