@@ -1,28 +1,40 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { NavigationContainer } from "@react-navigation/native";
+import { I18nextProvider } from "react-i18next";
+import {
+  StatusBar,
+  useColorScheme
+} from "react-native";
+import "react-native-gesture-handler";
+import { Provider } from "react-redux";
+import MainNavigator from "./src/Navigation/MainNavigator";
+import { SafeAreaView } from "react-native-safe-area-context";
+import i18n from "./src/i18n/i18n";
+import { useRef } from "react";
+import store from "./src/Redux/Store";
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  const colorScheme: any = useColorScheme();
+  const navigationRef: any = useRef<any>(null);
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <SafeAreaView style={{ flex: 1 }} edges={["top", "bottom"]}>
+      <StatusBar
+        hidden={false}
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
+      />
+      <Provider store={store}>
+        <I18nextProvider i18n={i18n}>
+          <NavigationContainer
+            ref={navigationRef}
+          >
+            <MainNavigator />
+          </NavigationContainer>
+        </I18nextProvider>
+      </Provider>
+    </SafeAreaView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
+
