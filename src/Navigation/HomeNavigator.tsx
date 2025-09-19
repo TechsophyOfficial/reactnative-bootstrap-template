@@ -1,10 +1,10 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import { StyleSheet } from "react-native";
-import Login from "../Screens/Signin/Login";
-import Second from "../Screens/Signin/Second";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import Login from '../Screens/Signin/Login';
+import Second from '../Screens/Signin/Second';
 
-const Stack = createNativeStackNavigator();
+const Stack: any = createNativeStackNavigator();
 
 const HomeNavigator = () => {
   return (
